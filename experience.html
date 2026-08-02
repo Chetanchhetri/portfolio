@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience — Chetan Chhetri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="brand"><span class="mark">CC</span>Chetan Chhetri</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="experience.html" class="active">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a class="nav-cta" href="contact.html">Get in touch</a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="page-header reveal">
+      <div class="eyebrow">Experience</div>
+      <h1>Two internships, both about turning models into systems.</h1>
+      <p>Everything below shipped to real users — with the latency, uptime, and eval numbers to show for it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="timeline" style="padding-bottom:40px;">
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <div class="period">Apr 2026 — Present</div>
+          <div>Remote</div>
+          <span class="tl-tag"><span class="dot"></span>Current role</span>
+        </div>
+        <div class="tl-body">
+          <h3>AI/ML Developer Intern</h3>
+          <div class="company">Hansraj Ventures · FinTech, LegalTech &amp; Social Media</div>
+          <ul>
+            <li>Built the full backend for <b>FamioX Employee Suite</b> — a Teams-style real-time collaboration platform with WebSocket channels, presence, and threaded messaging, plus async employee-activity logging to MongoDB — serving concurrent sessions at sub-100ms message delivery.</li>
+            <li>Architected <b>Risk Minor</b>, a production multi-agent risk-intelligence platform: hybrid BM25 + semantic vector search (Milvus) feeds a RAG pipeline for natural-language queries over live risk data, with a finetuned sLLM auto-generating structured compliance reports.</li>
+            <li>Wired <b>RAGAS eval scores</b> (context precision, answer faithfulness) into a Langfuse dashboard for real-time hallucination monitoring across every RAG response.</li>
+            <li>Built a <b>multilingual NLP translation pipeline</b> for risk-document ingestion — language detection and model-routing to locale-appropriate translation models — enabling cross-border regulatory coverage.</li>
+            <li>Deployed an <b>sLLM-powered vision pipeline</b> for FamioX generating automatic photo captions and content tags at inference time, cutting manual content-labeling overhead by roughly <b>60%</b>.</li>
+            <li>Engineered async <b>FastAPI REST microservices</b> across all services with Docker-based CI/CD — reduced response latency by roughly <b>40%</b> and maintained <b>99%+ uptime</b> across staging and production.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <div class="period">Dec 2025 — Mar 2026</div>
+          <div>Remote</div>
+        </div>
+        <div class="tl-body">
+          <h3>Software Developer Intern</h3>
+          <div class="company">ACCESCO Living · FinTech &amp; Smart Home</div>
+          <ul>
+            <li>Built an <b>inventory-monitoring system</b> paired with a demand-forecasting model (Scikit-Learn, time-series regression on current + prior-week sales data) — reduced stockouts by <b>35%</b> and overstock waste by <b>22%</b>.</li>
+            <li>Designed a <b>household budgeting engine</b> that auto-allocates income into Needs, Expenses, Fun, and Savings using city cost-of-living indices, family size, and income — personalized financial plans across 4 city tiers.</li>
+            <li>Deployed <b>statistical anomaly-detection pipelines</b> on time-series telemetry, cutting false-positive alerts by <b>28%</b>.</li>
+            <li>Refactored a legacy monolith into <b>async FastAPI microservices</b> with Docker-based reproducible testing, reducing end-to-end latency by <b>40%</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <div class="period">Sep 2025 — Present</div>
+          <div>Siliguri, India</div>
+        </div>
+        <div class="tl-body">
+          <h3>Technical Associate</h3>
+          <div class="company">SIT Photography Club</div>
+          <ul>
+            <li>Built and deployed the club's official website using HTML, CSS, and JS.</li>
+            <li>Manage technical infrastructure, version control, and content updates.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-meta">
+          <div class="period">Jul 2025 — Nov 2025</div>
+          <div>Remote</div>
+        </div>
+        <div class="tl-body">
+          <h3>Contributor</h3>
+          <div class="company">GirlScript Summer of Code</div>
+          <ul>
+            <li>Contributed to open-source projects as part of a global summer-long mentorship program.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section style="padding-top:0;">
+      <div class="cta-banner reveal">
+        <div class="eyebrow">Next up</div>
+        <h2>See the projects behind these roles.</h2>
+        <p>Risk Minor, FamioX, and the open-source systems that shaped the way I build.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="projects.html">View projects</a>
+          <a class="btn btn-outline" href="contact.html">Contact me</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Chetan Chhetri · Siliguri, West Bengal, India</p>
+    <div class="footer-links">
+      <a href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/chetanchhetri" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://leetcode.com/u/2rPvyovowx" target="_blank" rel="noopener">LeetCode</a>
+      <a href="mailto:chhetrichetan45@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
