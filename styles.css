@@ -59,6 +59,9 @@ nav.site-nav{
 }
 .nav-links a:hover{ color:var(--ink); background:var(--bg-alt); transform:translateY(-1px); }
 .nav-links a.active{ color:var(--ink); background:var(--accent-soft); }
+.nav-links a.resume-link{ display:inline-flex; align-items:center; gap:6px; color:var(--accent); font-weight:600; }
+.nav-links a.resume-link:hover{ color:var(--accent-deep); background:var(--accent-soft); }
+.nav-links a.resume-link svg{ flex-shrink:0; }
 .nav-cta{
   font-family:var(--body); font-weight:600; font-size:14px; color:#fff !important;
   background:var(--ink); padding:10px 18px; border-radius:100px; transition:background .18s;
