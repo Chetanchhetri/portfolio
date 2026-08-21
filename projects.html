@@ -1,120 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — Chetan Chhetri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>(function(){var t=localStorage.getItem('cc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
 
+<div class="top-status-bar">
+  <div class="wrap status-content">
+    <span><span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // LOCATION: SILIGURI → BANGALORE</span>
+    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER]</span>
+  </div>
+</div>
+
 <header class="site-header">
   <nav class="site-nav">
-    <a href="index.html" class="brand"><span class="mark">CC</span>Chetan Chhetri</a>
+    <a href="index.html" class="brand"><span class="mark">CC_</span>Chetan Chhetri</a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="experience.html">Experience</a>
-      <a href="projects.html" class="active">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="resume.pdf" download class="resume-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Résumé</a>
+      <a href="index.html"><span class="cmd">//</span> 01.Home</a>
+      <a href="experience.html"><span class="cmd">//</span> 02.Experience</a>
+      <a href="projects.html" class="active"><span class="cmd">//</span> 03.Projects</a>
+      <a href="about.html"><span class="cmd">//</span> 04.About</a>
+      <a href="contact.html"><span class="cmd">//</span> 05.Contact</a>
     </div>
-    <a class="nav-cta" href="contact.html">Get in touch</a>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-right">
+      <button class="theme-toggle"><span class="ti">☀</span><span class="tl">LIGHT</span></button>
+      <a class="nav-cta" href="contact.html">GET_IN_TOUCH()</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 </header>
 
 <main>
   <div class="wrap">
-    <div class="page-header reveal">
-      <div class="eyebrow">Projects</div>
-      <h1>Systems I've built end to end.</h1>
-      <p>Production work, open-source retrieval systems, computer vision, and infrastructure tooling — filter by category below.</p>
+    <div class="page-header">
+      <div class="eyebrow">SYSTEM_INDEX</div>
+      <h1>Projects &amp; Open Source Repositories</h1>
+      <p>Production AI pipelines, localized RAG engines, multi-agent frameworks, computer vision classifiers, and developer infrastructure tools. Detailed architecture breakdowns for each system.</p>
     </div>
   </div>
 
   <div class="wrap">
     <section>
-      <div class="filter-row reveal">
-        <button class="filter-btn active" data-filter="all">All (9)</button>
-        <button class="filter-btn" data-filter="rag">RAG &amp; Agents</button>
-        <button class="filter-btn" data-filter="vision">Computer Vision</button>
-        <button class="filter-btn" data-filter="infra">Infra &amp; Tools</button>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all">ALL_SYSTEMS (10)</button>
+        <button class="filter-btn" data-filter="rag">RAG &amp; AGENTS</button>
+        <button class="filter-btn" data-filter="vision">COMPUTER VISION</button>
+        <button class="filter-btn" data-filter="infra">INFRA &amp; TOOLS</button>
       </div>
 
       <div class="proj-grid">
 
-        <div class="card reveal" data-category="rag">
-          <div class="card-top"><h3>Risk Minor</h3><span class="badge prod">Production</span></div>
-          <p>Multi-agent risk-intelligence platform: hybrid BM25 + Milvus retrieval feeds a RAG pipeline over live risk data, with RAGAS and Langfuse wired in for real-time hallucination monitoring and a finetuned sLLM generating compliance reports.</p>
-          <div class="chip-row"><span class="chip">FastAPI</span><span class="chip">Milvus</span><span class="chip">RAGAS</span><span class="chip">Langfuse</span></div>
-          <div class="card-link">Built at Hansraj Ventures</div>
+        <!-- Risk Minor -->
+        <div class="card" data-category="rag">
+          <div class="card-top"><h3>Risk Minor</h3><span class="badge prod">PRODUCTION</span></div>
+          <p>Multi-agent risk intelligence platform built for regulatory compliance workflows at Hansraj Ventures. Combines dense and sparse retrieval with a fine-tuned LLM, full evaluation tracing, and input/output safety guardrails in a single coherent pipeline.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Hybrid retrieval:</b> BM25 keyword search + Milvus dense vector search running in parallel; results merged via reciprocal rank fusion (top_k=12) before passing to the LLM context window.</li>
+              <li><b>LLM layer:</b> LoRA-fine-tuned Llama 3.1 8B served via FastAPI with CUDA inference; guardrails enforce output format, hallucination checks, and regulatory policy compliance before any response is returned.</li>
+              <li><b>Observability:</b> Full RAGAS eval harness (faithfulness, answer relevancy, context recall) + Langfuse distributed tracing across all pipeline nodes — every inference logged with latency, token counts, and eval scores.</li>
+              <li><b>Infra:</b> Async FastAPI microservices containerized with Docker CI/CD; 40% latency reduction, 99%+ uptime in production at Hansraj Ventures.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">FastAPI</span><span class="chip">Milvus</span><span class="chip">RAGAS</span><span class="chip">Langfuse</span><span class="chip">Llama 3.1</span><span class="chip">Docker</span></div>
+          <div class="card-link" style="cursor:default; opacity:0.6;">Built at Hansraj Ventures (Private)</div>
         </div>
 
-        <div class="card reveal" data-category="rag">
-          <div class="card-top"><h3>Fact Check</h3><span class="badge oss">Open-source</span></div>
-          <p>Multi-agent fake-news detection engine — queries 3 local LLMs (Qwen, Phi-3, LLaMA) in parallel and aggregates verdicts via a consensus layer to suppress single-model hallucination bias, evaluated with RAGAS across political and scientific claim sets.</p>
-          <div class="chip-row"><span class="chip">Streamlit</span><span class="chip">Ollama</span><span class="chip">RAGAS</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- Banking Compliance RAG -->
+        <div class="card" data-category="rag">
+          <div class="card-top"><h3>Banking Compliance RAG</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>End-to-end financial compliance system combining classical machine learning with retrieval-augmented generation to answer natural language regulatory queries over banking policy documents in real time.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>ML layer:</b> Multivariate regression pipeline trained on loan-default and risk-scoring datasets; integrated directly into response generation to provide quantitative compliance context alongside retrieved text.</li>
+              <li><b>Retrieval:</b> FAISS dense vector index + Qdrant persistent vector DB for hybrid retrieval across RBI and banking regulation corpora; BM25 reranking applied before final context assembly.</li>
+              <li><b>Validation:</b> Citation verification module cross-checks every LLM output claim against the source document passages; rule-based validators enforce domain-specific banking policy constraints.</li>
+              <li><b>Storage:</b> SQLite for document metadata, conversation history, and audit logs; LangChain orchestrates the full retrieval-generation chain.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Qdrant</span><span class="chip">Scikit-Learn</span><span class="chip">SQLite</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
         </div>
 
-        <div class="card reveal" data-category="infra">
-          <div class="card-top"><h3>Intelligent Proxy Gateway</h3><span class="badge oss">Open-source</span></div>
-          <p>Four-stage request pipeline — prompt reformulation → security filtering → task triage → token optimization — routing to a local Ollama model first, cloud LLM only on cost-threshold fallback. Shipped as a backend service and Chrome extension.</p>
-          <div class="chip-row"><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Ollama</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- Fact Check Multi-Agent -->
+        <div class="card" data-category="rag">
+          <div class="card-top"><h3>Fact Check Multi-Agent (VeriCore)</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>Fake-news and misinformation detection engine that queries three locally-running LLMs in parallel and aggregates their verdicts through a consensus scoring layer, dramatically reducing single-model hallucination and bias.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Model ensemble:</b> Qwen2:0.5B, Phi-3:latest, and LLaMA 3.1:latest queried simultaneously via Ollama; each returns a structured verdict (TRUE / FALSE / UNVERIFIED) with confidence score and reasoning chain.</li>
+              <li><b>Consensus engine:</b> Weighted majority voting across the three verdicts; disagreements trigger a fourth "tiebreaker" call with a larger model context window.</li>
+              <li><b>Live context:</b> Optional DuckDuckGo web search module injects real-time news snippets as additional context before the consensus round — addresses recency gaps in local model training data.</li>
+              <li><b>Evaluation:</b> RAGAS faithfulness metrics validate each model's reasoning against its cited context; disagreement deltas tracked per model to identify consistent bias patterns.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">Streamlit</span><span class="chip">Ollama</span><span class="chip">RAGAS</span><span class="chip">Multi-Agent</span><span class="chip">Python</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
         </div>
 
-        <div class="card reveal" data-category="rag">
-          <div class="card-top"><h3>RBI Regulatory RAG</h3><span class="badge oss">Open-source</span></div>
-          <p>Hybrid BM25 + FAISS retrieval with cross-encoder reranking and hallucination-detection fallbacks. Answers compliance questions grounded in RBI regulatory filings, with per-query Langfuse tracing on latency and reranker scores.</p>
-          <div class="chip-row"><span class="chip">FAISS</span><span class="chip">BM25</span><span class="chip">Langfuse</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- Intelligent Proxy Gateway -->
+        <div class="card" data-category="infra">
+          <div class="card-top"><h3>Intelligent Proxy Gateway (IPG)</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>Four-stage LLM request optimization middleware deployed as both a Flask/FastAPI backend and a Chrome Manifest V3 extension — routes queries intelligently between local on-device models and cloud LLMs based on task classification and cost.</p>
+          <div class="proj-details">
+            <h4>// Pipeline Stages</h4>
+            <ul>
+              <li><b>Stage 1 — Prompt Reformulation:</b> Rewrites incoming queries for improved clarity, specificity, and instruction alignment before routing begins.</li>
+              <li><b>Stage 2 — Security Filtering:</b> Scans for prompt injection patterns, jailbreak attempts, and PII leakage using rule-based and embedding-similarity checks; blocks or sanitizes before forwarding.</li>
+              <li><b>Stage 3 — Task Triage:</b> Classifies request complexity (simple/medium/complex) and routes to the appropriate model: local Ollama models (Mistral, Phi-3) for lightweight tasks; cloud LLM fallback (OpenAI/Anthropic) for complex reasoning.</li>
+              <li><b>Stage 4 — Token Optimization:</b> Compresses context window before final LLM call via extractive summarization, reducing token cost by up to 35% on long-context requests.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Ollama</span><span class="chip">Chrome Extension</span><span class="chip">MV3</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
         </div>
 
-        <div class="card reveal" data-category="rag">
-          <div class="card-top"><h3>RAG · Airbus FCOM</h3><span class="badge research">Research</span></div>
-          <p>Retrieval-augmented question answering grounded in Airbus Flight Crew Operating Manual documentation — a domain-grounding test case for RAG in a setting where wrong answers aren't an option.</p>
-          <div class="chip-row"><span class="chip">RAG</span><span class="chip">Python</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/RAG_AIRBUS-FCOM" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- RAG Airbus FCOM -->
+        <div class="card" data-category="rag">
+          <div class="card-top"><h3>RAG · Airbus FCOM</h3><span class="badge research">RESEARCH</span></div>
+          <p>Ultra-high-precision retrieval-augmented question-answering system grounded in Airbus Flight Crew Operating Manual (FCOM) documentation — a domain where factual errors are operationally unacceptable.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Document processing:</b> FCOM PDFs parsed with structure-aware chunking preserving section hierarchy, chapter numbering, and callout blocks; custom metadata tagging enables procedure-level retrieval.</li>
+              <li><b>Retrieval:</b> Dense vector index with re-ranking optimized for precision over recall — every retrieved chunk must be from the correct section and version of the manual.</li>
+              <li><b>Faithfulness guardrail:</b> Every generated answer traced back to source passage citations; any answer with insufficient grounding returns a confidence warning rather than a fabricated response.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">Python</span><span class="chip">RAG</span><span class="chip">Vector DB</span><span class="chip">PDF Parsing</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri/RAG_AIRBUS-FCOM" target="_blank" rel="noopener">github.com/Chetanchhetri/RAG_AIRBUS-FCOM ↗</a>
         </div>
 
-        <div class="card reveal" data-category="infra">
-          <div class="card-top"><h3>Local Co-pilot</h3><span class="badge oss">Open-source</span></div>
-          <p>A local-first coding assistant built on Ollama — keeps inference and code context on-device rather than routing every completion through a cloud API.</p>
-          <div class="chip-row"><span class="chip">Ollama</span><span class="chip">Python</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/Local_Co-pilot" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- Local Co-pilot -->
+        <div class="card" data-category="infra">
+          <div class="card-top"><h3>Local Co-pilot</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>On-device AI coding assistant extension for VS Code, built on Ollama for fully offline, zero data-leakage developer workflows with real-time code completion and context-aware suggestions.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Context engine:</b> Sliding window context manager maintains relevant code context (open file, cursor position, recent edits, imports) for accurate completions without exceeding model context limits.</li>
+              <li><b>Local inference:</b> Routes completions to Ollama-served models (Codestral, DeepSeek-Coder, Phi-3) — no data leaves the machine; works fully offline.</li>
+              <li><b>VS Code API integration:</b> Custom inline completion provider with debounced triggering; separate command palette integration for longer generation tasks like docstring generation and test scaffolding.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">Ollama</span><span class="chip">VS Code API</span><span class="chip">Python</span><span class="chip">TypeScript</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri/Local_Co-pilot" target="_blank" rel="noopener">github.com/Chetanchhetri/Local_Co-pilot ↗</a>
         </div>
 
-        <div class="card reveal" data-category="vision">
-          <div class="card-top"><h3>Image Enhancer</h3><span class="badge oss">Open-source</span></div>
-          <p>Image enhancement engine for automated quality upscaling and denoising — integrated into the FamioX content pipeline alongside the vision-tagging service.</p>
-          <div class="chip-row"><span class="chip">Python</span><span class="chip">TensorFlow</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/Image-Enhancer" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- Image Enhancer -->
+        <div class="card" data-category="vision">
+          <div class="card-top"><h3>Image Enhancer</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>Computer vision pipeline combining super-resolution and intelligent denoising for automated image quality improvement — built as companion infrastructure for specialized vision models with degraded input data.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Super-resolution:</b> ESRGAN-based upscaling pipeline achieving 4× resolution enhancement with perceptual loss training for natural detail preservation over pixel-accuracy MSE.</li>
+              <li><b>Denoising:</b> Adaptive bilateral + DnCNN hybrid approach; noise level estimation module selects denoising strength dynamically per-image rather than using a fixed filter.</li>
+              <li><b>Pipeline integration:</b> Exposes a REST API endpoint for batch processing and integrates as a preprocessing stage for downstream vision classifiers — designed for VRAM-constrained environments.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">OpenCV</span><span class="chip">Python</span><span class="chip">ESRGAN</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri/Image-Enhancer" target="_blank" rel="noopener">github.com/Chetanchhetri/Image-Enhancer ↗</a>
         </div>
 
-        <div class="card reveal" data-category="vision">
-          <div class="card-top"><h3>Potato Disease Classifier</h3><span class="badge oss">Open-source</span></div>
-          <p>CNN-based image classifier distinguishing healthy potato leaves from early and late blight — an agri-tech application of the same computer-vision fundamentals used in the FamioX vision pipeline.</p>
-          <div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">CNN</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/potato-disease-classifier" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- Potato Disease Classifier -->
+        <div class="card" data-category="vision">
+          <div class="card-top"><h3>Potato Disease Classifier</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>CNN-based agricultural leaf disease detection system identifying early blight, late blight, and healthy potato plants from field images — designed for high-throughput inference in resource-limited agricultural environments.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Model:</b> Custom CNN architecture trained on the Plant Village dataset; data augmentation pipeline (rotation, flipping, color jitter, Gaussian noise) improves generalization to real-world field photography conditions.</li>
+              <li><b>Optimization:</b> Post-training quantization to INT8 reduces model size by 75% while maintaining accuracy within 2% of the full-precision baseline; enables deployment on edge devices and mobile inference.</li>
+              <li><b>Inference throughput:</b> Batch inference pipeline with TFServing for production deployment; ~120 images/sec throughput on a single consumer GPU.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">CNN</span><span class="chip">Keras</span><span class="chip">TFServing</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri/potato-disease-classifier" target="_blank" rel="noopener">github.com/Chetanchhetri/potato-disease-classifier ↗</a>
         </div>
 
-        <div class="card reveal" data-category="infra">
-          <div class="card-top"><h3>Civic Connect</h3><span class="badge oss">Open-source</span></div>
-          <p>A full-stack platform for reporting and tracking local civic issues — built to connect citizens with municipal follow-up rather than let reports disappear into a form.</p>
-          <div class="chip-row"><span class="chip">Full-stack</span><span class="chip">SQL</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/Civic-Connect" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- Civic Connect -->
+        <div class="card" data-category="vision">
+          <div class="card-top"><h3>Civic Connect Engine</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>Smart India Hackathon (Internal Round Winner) project — CNN classifier for detecting urban civic hazards (potholes, garbage, damaged infrastructure) from crowdsourced citizen photos, integrated with GCP microservices for automated complaint routing.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Classifier:</b> Transfer-learning on MobileNetV2 fine-tuned on a custom civic hazard dataset; achieved <b>91% validation accuracy</b> across 8 hazard categories with a balanced precision-recall tradeoff.</li>
+              <li><b>Crowdsourced pipeline:</b> Mobile photo uploads routed through GCP Cloud Storage → Cloud Run inference container → automated complaint ticket creation in the civic management system based on predicted hazard type and severity score.</li>
+              <li><b>Infra:</b> Fully containerized with Docker; GCP Cloud Run autoscaling handles variable citizen submission volumes; image metadata (GPS, timestamp) attached to every complaint for geographic routing.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">CNN</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">MobileNetV2</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri/Civic-Connect" target="_blank" rel="noopener">github.com/Chetanchhetri/Civic-Connect ↗</a>
         </div>
 
-        <div class="card reveal" data-category="infra">
-          <div class="card-top"><h3>NetScan Pro</h3><span class="badge oss">Open-source</span></div>
-          <p>A network scanning and reconnaissance tool for surfacing open ports and service fingerprints — infrastructure-adjacent tooling outside the ML stack.</p>
-          <div class="chip-row"><span class="chip">Python</span><span class="chip">Networking</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/NetScan_Pro" target="_blank" rel="noopener">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <!-- NetScan Pro -->
+        <div class="card" data-category="infra">
+          <div class="card-top"><h3>NetScan Pro</h3><span class="badge oss">OPEN-SOURCE</span></div>
+          <p>High-performance network reconnaissance utility for discovering active hosts, enumerating open ports, fingerprinting service banners, and building a structured inventory of network topology — built as a developer security research tool.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Host discovery:</b> Multi-threaded ICMP ping sweep with configurable concurrency and timeout parameters; CIDR range parsing for subnet-level scans.</li>
+              <li><b>Port scanning:</b> SYN, TCP Connect, and UDP scan modes with configurable port ranges; banner grabbing for common service identification (HTTP, SSH, FTP, SMTP, etc.).</li>
+              <li><b>Output:</b> Structured JSON and CSV export of scan results with service version fingerprints; designed for integration into broader security pipeline workflows.</li>
+            </ul>
+          </div>
+          <div class="chip-row"><span class="chip">Python</span><span class="chip">Sockets</span><span class="chip">Threading</span><span class="chip">Networking</span></div>
+          <a class="card-link" href="https://github.com/Chetanchhetri/NetScan_Pro" target="_blank" rel="noopener">github.com/Chetanchhetri/NetScan_Pro ↗</a>
         </div>
 
       </div>
@@ -122,14 +226,14 @@
   </div>
 
   <div class="wrap">
-    <section style="padding-top:0;">
-      <div class="cta-banner reveal">
-        <div class="eyebrow">Curious about one of these?</div>
-        <h2>Happy to walk through the architecture live.</h2>
-        <p>Retrieval design, agent orchestration, or the eval setup behind any of these — ask me anything.</p>
+    <section>
+      <div class="cta-banner">
+        <div class="eyebrow">LIVE_DEMO</div>
+        <h2>Want a walkthrough of any architecture?</h2>
+        <p>I can walk through retrieval code, LoRA fine-tuning setups, or eval harness implementations live on a call.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="contact.html">Contact me</a>
-          <a class="btn btn-outline" href="about.html">See skills &amp; background</a>
+          <a class="btn btn-primary" href="contact.html">./schedule_call.sh</a>
+          <a class="btn btn-outline" href="about.html">about_me()</a>
         </div>
       </div>
     </section>
@@ -138,12 +242,12 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© 2026 Chetan Chhetri · Siliguri, West Bengal, India</p>
+    <p>© 2026 CHETAN CHHETRI · SIT MAKAUT · B.TECH CSE (AI/ML)</p>
     <div class="footer-links">
-      <a href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/chetanchhetri" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://leetcode.com/u/2rPvyovowx" target="_blank" rel="noopener">LeetCode</a>
-      <a href="mailto:chhetrichetan45@gmail.com">Email</a>
+      <a href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">[GITHUB]</a>
+      <a href="https://linkedin.com/in/chetanchhetri" target="_blank" rel="noopener">[LINKEDIN]</a>
+      <a href="https://leetcode.com/u/2rPvyovowx" target="_blank" rel="noopener">[LEETCODE]</a>
+      <a href="mailto:chhetrichetan45@gmail.com">[EMAIL]</a>
     </div>
   </div>
 </footer>

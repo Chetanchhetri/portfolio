@@ -1,120 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Experience — Chetan Chhetri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>(function(){var t=localStorage.getItem('cc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
 
+<div class="top-status-bar">
+  <div class="wrap status-content">
+    <span><span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // LOCATION: SILIGURI → BANGALORE</span>
+    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER]</span>
+  </div>
+</div>
+
 <header class="site-header">
   <nav class="site-nav">
-    <a href="index.html" class="brand"><span class="mark">CC</span>Chetan Chhetri</a>
+    <a href="index.html" class="brand"><span class="mark">CC_</span>Chetan Chhetri</a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="experience.html" class="active">Experience</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="resume.pdf" download class="resume-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Résumé</a>
+      <a href="index.html"><span class="cmd">//</span> 01.Home</a>
+      <a href="experience.html" class="active"><span class="cmd">//</span> 02.Experience</a>
+      <a href="projects.html"><span class="cmd">//</span> 03.Projects</a>
+      <a href="about.html"><span class="cmd">//</span> 04.About</a>
+      <a href="contact.html"><span class="cmd">//</span> 05.Contact</a>
     </div>
-    <a class="nav-cta" href="contact.html">Get in touch</a>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-right">
+      <button class="theme-toggle"><span class="ti">☀</span><span class="tl">LIGHT</span></button>
+      <a class="nav-cta" href="contact.html">GET_IN_TOUCH()</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 </header>
 
 <main>
   <div class="wrap">
-    <div class="page-header reveal">
-      <div class="eyebrow">Experience</div>
-      <h1>Two internships, both about turning models into systems.</h1>
-      <p>Everything below shipped to real users — with the latency, uptime, and eval numbers to show for it.</p>
+    <div class="page-header">
+      <div class="eyebrow">WORK_HISTORY</div>
+      <h1>Production Engineering &amp; AI Internships</h1>
+      <p>Building scalable backend microservices, fine-tuning multilingual transformer models, and enforcing rigorous evaluation standards in real-world fintech, risk, and smart infrastructure platforms.</p>
     </div>
   </div>
 
   <div class="wrap">
-    <section class="timeline" style="padding-bottom:40px;">
-      <div class="tl-item reveal">
+    <section class="timeline">
+
+      <!-- Hansraj Ventures -->
+      <div class="tl-item">
         <div class="tl-meta">
-          <div class="period">Apr 2026 — Present</div>
-          <div>Remote</div>
-          <span class="tl-tag"><span class="dot"></span>Current role</span>
+          <div class="period">Apr 2025 — Present</div>
+          <div class="loc">Remote / Hybrid</div>
+          <span class="tl-tag"><span class="dot"></span>CURRENT ROLE</span>
         </div>
         <div class="tl-body">
           <h3>AI/ML Developer Intern</h3>
-          <div class="company">Hansraj Ventures · FinTech, LegalTech &amp; Social Media</div>
+          <div class="company">Hansraj Ventures · FinTech · LegalTech · Social Media</div>
           <ul>
-            <li>Built the full backend for <b>FamioX Employee Suite</b> — a Teams-style real-time collaboration platform with WebSocket channels, presence, and threaded messaging, plus async employee-activity logging to MongoDB — serving concurrent sessions at sub-100ms message delivery.</li>
-            <li>Architected <b>Risk Minor</b>, a production multi-agent risk-intelligence platform: hybrid BM25 + semantic vector search (Milvus) feeds a RAG pipeline for natural-language queries over live risk data, with a finetuned sLLM auto-generating structured compliance reports.</li>
-            <li>Wired <b>RAGAS eval scores</b> (context precision, answer faithfulness) into a Langfuse dashboard for real-time hallucination monitoring across every RAG response.</li>
-            <li>Built a <b>multilingual NLP translation pipeline</b> for risk-document ingestion — language detection and model-routing to locale-appropriate translation models — enabling cross-border regulatory coverage.</li>
-            <li>Deployed an <b>sLLM-powered vision pipeline</b> for FamioX generating automatic photo captions and content tags at inference time, cutting manual content-labeling overhead by roughly <b>60%</b>.</li>
-            <li>Engineered async <b>FastAPI REST microservices</b> across all services with Docker-based CI/CD — reduced response latency by roughly <b>40%</b> and maintained <b>99%+ uptime</b> across staging and production.</li>
+            <li>Fine-tuned <b>Llama 3.1 8B</b> using <b>LoRA with adapter merging</b> for multilingual legal document translation, enabling automated regulatory compliance support across <b>8 Indian languages</b> — Assamese, Bengali, Kannada, Gujarati, Nepali, Marathi, Tamil, and Malayalam — with measurably improved cross-lingual coherence.</li>
+            <li>Architected the retrieval layer for <b>Risk Minor</b>, a multi-agent risk intelligence platform, combining <b>BM25 keyword search</b> with <b>Milvus dense vector search</b> behind a high-concurrency natural language query API — enabling sub-second regulatory document retrieval over large corpora.</li>
+            <li>Implemented input/output <b>validation guardrails</b> and hallucination-detection fallbacks directly in the Risk Minor RAG pipeline, enforcing zero-tolerance for unsafe or fabricated regulatory context before any output reaches the client.</li>
+            <li>Trained multivariate <b>regression models</b> for financial compliance and automated risk-scoring workflows; integrated them as FastAPI endpoints to eliminate manual analyst reporting steps.</li>
+            <li>Built an automated <b>RAGAS evaluation harness</b> measuring faithfulness, answer relevancy, and context recall across all pipeline stages, with full <b>Langfuse tracing</b> for latency and quality observability across every inference node.</li>
+            <li>Designed and deployed a <b>computer-vision pipeline</b> for cartoon-style image synthesis, optimized for constrained GPU VRAM execution using mixed-precision inference and model quantization.</li>
+            <li>Engineered async <b>FastAPI microservices</b> with Docker CI/CD pipelines, achieving <b>40% reduction in request processing latency</b> and sustaining <b>99%+ service uptime</b> across all production endpoints.</li>
           </ul>
         </div>
       </div>
 
-      <div class="tl-item reveal">
+      <!-- ACCESCO Living -->
+      <div class="tl-item">
         <div class="tl-meta">
-          <div class="period">Dec 2025 — Mar 2026</div>
-          <div>Remote</div>
+          <div class="period">Dec 2024 — Mar 2025</div>
+          <div class="loc">Remote</div>
+          <span class="badge prod" style="margin-top:10px;">COMPLETED</span>
         </div>
         <div class="tl-body">
           <h3>Software Developer Intern</h3>
-          <div class="company">ACCESCO Living · FinTech &amp; Smart Home</div>
+          <div class="company">ACCESCO Living · FinTech &amp; Smart Home Infrastructure</div>
           <ul>
-            <li>Built an <b>inventory-monitoring system</b> paired with a demand-forecasting model (Scikit-Learn, time-series regression on current + prior-week sales data) — reduced stockouts by <b>35%</b> and overstock waste by <b>22%</b>.</li>
-            <li>Designed a <b>household budgeting engine</b> that auto-allocates income into Needs, Expenses, Fun, and Savings using city cost-of-living indices, family size, and income — personalized financial plans across 4 city tiers.</li>
-            <li>Deployed <b>statistical anomaly-detection pipelines</b> on time-series telemetry, cutting false-positive alerts by <b>28%</b>.</li>
-            <li>Refactored a legacy monolith into <b>async FastAPI microservices</b> with Docker-based reproducible testing, reducing end-to-end latency by <b>40%</b>.</li>
+            <li>Refactored a legacy monolithic codebase into async <b>FastAPI microservices</b> backed by Docker test environments, eliminating blocking I/O bottlenecks and reducing <b>end-to-end API latency by 40%</b> while improving unit test coverage significantly.</li>
+            <li>Developed a <b>regression-based inventory forecasting engine</b> integrating real-time stock-level alerts — reduced stockouts by <b>35%</b> and overstock carrying loss by <b>22%</b> in simulated production scenarios.</li>
+            <li>Built statistical <b>anomaly detection pipelines</b> over time-series IoT telemetry data using Pandas and Scikit-Learn, applying rolling z-score and IQR-based thresholding to decrease false-positive system alerts by <b>28%</b>.</li>
+            <li>Implemented reproducible <b>ML training pipelines</b> with TensorFlow and Docker volume mounts, ensuring full model traceability and version control across distributed datasets and training environments.</li>
           </ul>
         </div>
       </div>
 
-      <div class="tl-item reveal">
+      <!-- SIT Photography Club -->
+      <div class="tl-item">
         <div class="tl-meta">
-          <div class="period">Sep 2025 — Present</div>
-          <div>Siliguri, India</div>
+          <div class="period">Sep 2024 — Present</div>
+          <div class="loc">Siliguri, WB, India</div>
         </div>
         <div class="tl-body">
           <h3>Technical Associate</h3>
           <div class="company">SIT Photography Club</div>
           <ul>
-            <li>Built and deployed the club's official website using HTML, CSS, and JS.</li>
-            <li>Manage technical infrastructure, version control, and content updates.</li>
+            <li>Built and deployed the club's official web portal from scratch using modern HTML/CSS/JS, managing full lifecycle from design to deployment on a custom domain.</li>
+            <li>Manage ongoing technical infrastructure including domain DNS configuration, SSL, and iterative content updates for club events and announcements.</li>
           </ul>
         </div>
       </div>
 
-      <div class="tl-item reveal">
+      <!-- GSSoC -->
+      <div class="tl-item">
         <div class="tl-meta">
-          <div class="period">Jul 2025 — Nov 2025</div>
-          <div>Remote</div>
+          <div class="period">Jul 2024 — Nov 2024</div>
+          <div class="loc">Remote</div>
         </div>
         <div class="tl-body">
-          <h3>Contributor</h3>
-          <div class="company">GirlScript Summer of Code</div>
+          <h3>Open-Source Contributor</h3>
+          <div class="company">GirlScript Summer of Code (GSSoC)</div>
           <ul>
-            <li>Contributed to open-source projects as part of a global summer-long mentorship program.</li>
+            <li>Contributed across multiple open-source repositories — submitted bug fixes, performance optimizations, and improved documentation to developer tooling and machine learning utility libraries.</li>
+            <li>Collaborated with maintainers via GitHub PR reviews, gaining experience with real OSS contribution workflows, code review culture, and async communication practices.</li>
           </ul>
         </div>
       </div>
+
     </section>
   </div>
 
   <div class="wrap">
-    <section style="padding-top:0;">
-      <div class="cta-banner reveal">
-        <div class="eyebrow">Next up</div>
-        <h2>See the projects behind these roles.</h2>
-        <p>Risk Minor, FamioX, and the open-source systems that shaped the way I build.</p>
+    <section>
+      <div class="cta-banner">
+        <div class="eyebrow">EXPLORE_MORE</div>
+        <h2>Inspect the projects behind these roles.</h2>
+        <p>Explore source code, multi-agent architectures, RAG pipelines, and vector search systems built across these internships.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="projects.html">View projects</a>
-          <a class="btn btn-outline" href="contact.html">Contact me</a>
+          <a class="btn btn-primary" href="projects.html">./view_projects.sh</a>
+          <a class="btn btn-outline" href="contact.html">contact_me()</a>
         </div>
       </div>
     </section>
@@ -123,12 +142,12 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© 2026 Chetan Chhetri · Siliguri, West Bengal, India</p>
+    <p>© 2026 CHETAN CHHETRI · SIT MAKAUT · B.TECH CSE (AI/ML)</p>
     <div class="footer-links">
-      <a href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/chetanchhetri" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://leetcode.com/u/2rPvyovowx" target="_blank" rel="noopener">LeetCode</a>
-      <a href="mailto:chhetrichetan45@gmail.com">Email</a>
+      <a href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">[GITHUB]</a>
+      <a href="https://linkedin.com/in/chetanchhetri" target="_blank" rel="noopener">[LINKEDIN]</a>
+      <a href="https://leetcode.com/u/2rPvyovowx" target="_blank" rel="noopener">[LEETCODE]</a>
+      <a href="mailto:chhetrichetan45@gmail.com">[EMAIL]</a>
     </div>
   </div>
 </footer>

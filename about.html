@@ -1,118 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Chetan Chhetri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>(function(){var t=localStorage.getItem('cc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
 
+<div class="top-status-bar">
+  <div class="wrap status-content">
+    <span><span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // LOCATION: SILIGURI → BANGALORE</span>
+    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER]</span>
+  </div>
+</div>
+
 <header class="site-header">
   <nav class="site-nav">
-    <a href="index.html" class="brand"><span class="mark">CC</span>Chetan Chhetri</a>
+    <a href="index.html" class="brand"><span class="mark">CC_</span>Chetan Chhetri</a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="experience.html">Experience</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html" class="active">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="resume.pdf" download class="resume-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Résumé</a>
+      <a href="index.html"><span class="cmd">//</span> 01.Home</a>
+      <a href="experience.html"><span class="cmd">//</span> 02.Experience</a>
+      <a href="projects.html"><span class="cmd">//</span> 03.Projects</a>
+      <a href="about.html" class="active"><span class="cmd">//</span> 04.About</a>
+      <a href="contact.html"><span class="cmd">//</span> 05.Contact</a>
     </div>
-    <a class="nav-cta" href="contact.html">Get in touch</a>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-right">
+      <button class="theme-toggle"><span class="ti">☀</span><span class="tl">LIGHT</span></button>
+      <a class="nav-cta" href="contact.html">GET_IN_TOUCH()</a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 </header>
 
 <main>
   <div class="wrap">
-    <div class="page-header reveal">
-      <div class="eyebrow">About</div>
-      <h1>Applied ML, with a systems mindset.</h1>
-      <p>B.Tech Computer Science student specializing in AI &amp; ML at Siliguri Institute of Technology, currently interning as an AI/ML Developer at Hansraj Ventures. I care about the part of AI engineering that happens after the model works — retrieval quality, latency, evals, and whether the thing stays up.</p>
+    <div class="page-header">
+      <div class="eyebrow">DEVELOPER_PROFILE</div>
+      <h1>Applied ML with a Systems Engineering Mindset</h1>
+      <p>B.Tech Computer Science student specializing in AI &amp; ML at Siliguri Institute of Technology (MAKAUT), expected graduation 2028. Currently interning as an AI/ML Developer at Hansraj Ventures — building production RAG pipelines, LoRA fine-tuning workflows, RAGAS evaluation harnesses, and high-concurrency async microservices.</p>
     </div>
   </div>
-
-  <div class="wrap">
-    <section id="skills">
-      <div class="section-head reveal">
-        <div class="eyebrow">Skills</div>
-        <h2>The stack, grouped the way I think about a system</h2>
-        <p>Retrieval and agents first, then the observability layer that tells you whether it's actually working, then the backend that keeps it running.</p>
-      </div>
-
-      <div class="skill-grid">
-        <div class="skill-panel reveal">
-          <div class="head"><span class="idot" style="background:var(--accent)"></span>LLM &amp; Agents</div>
-          <div class="tags"><span>RAG</span><span>Multi-Agent Systems</span><span>Hybrid Retrieval (BM25 + Semantic)</span><span>sLLM Finetuning</span><span>Prompt Engineering</span><span>Ollama</span><span>LangChain</span></div>
-        </div>
-        <div class="skill-panel reveal">
-          <div class="head"><span class="idot" style="background:var(--good)"></span>AI Observability &amp; Evals</div>
-          <div class="tags"><span>RAGAS</span><span>Context Precision</span><span>Answer Faithfulness</span><span>Langfuse Tracing</span><span>Hallucination Detection</span></div>
-        </div>
-        <div class="skill-panel reveal">
-          <div class="head"><span class="idot" style="background:#B76E00"></span>Backend &amp; Systems</div>
-          <div class="tags"><span>FastAPI</span><span>Flask</span><span>Async Microservices</span><span>WebSockets</span><span>REST APIs</span><span>Docker</span><span>CI/CD</span><span>GCP</span><span>Linux</span><span>Git</span></div>
-        </div>
-        <div class="skill-panel reveal">
-          <div class="head"><span class="idot" style="background:#9B5DE5"></span>Data &amp; ML</div>
-          <div class="tags"><span>TensorFlow</span><span>Scikit-Learn</span><span>Time-Series Forecasting</span><span>Pandas / NumPy</span><span>FAISS</span><span>Milvus</span><span>Qdrant</span><span>MongoDB</span><span>PostgreSQL</span></div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <section class="alt">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">Achievements</div>
-        <h2>Track record</h2>
-      </div>
-      <div class="metrics">
-        <div class="metric reveal"><div class="num">1st</div><div class="lbl">Smart India Hackathon — Winner (Internal Round)</div></div>
-        <div class="metric reveal"><div class="num">2nd</div><div class="lbl">45-Day DSA Challenge — 1st Runner-Up</div></div>
-        <div class="metric reveal"><div class="num">3rd</div><div class="lbl">SIT Code Quest — 3rd Place</div></div>
-        <div class="metric reveal"><div class="num">200+</div><div class="lbl">LeetCode problems solved</div></div>
-      </div>
-    </div>
-  </section>
 
   <div class="wrap">
     <section>
-      <div class="section-head reveal">
-        <div class="eyebrow">Education</div>
-        <h2>Foundation</h2>
+      <div class="section-head">
+        <div class="eyebrow">TECH_STACK</div>
+        <h2>Categorized Engineering Stack</h2>
+        <p>From retrieval and adapter fine-tuning to real-time observability and production async APIs.</p>
       </div>
-      <div class="edu-row reveal">
-        <div>
-          <h4>Siliguri Institute of Technology</h4>
-          <div class="sub">B.Tech in Computer Science — AI &amp; ML Specialization</div>
+
+      <div class="skill-grid">
+        <div class="skill-panel">
+          <div class="head"><span class="idot" style="background:var(--accent)"></span>AI/ML &amp; LLM Systems</div>
+          <div class="tags">
+            <span>RAG Pipelines</span>
+            <span>Hybrid Search (BM25 + Milvus/FAISS/Qdrant)</span>
+            <span>LoRA Fine-Tuning</span>
+            <span>Adapter Merging</span>
+            <span>Hallucination Guardrails</span>
+            <span>RAGAS Evals</span>
+            <span>Langfuse Tracing</span>
+            <span>Ollama · Local LLMs</span>
+            <span>HuggingFace PEFT</span>
+          </div>
         </div>
-        <div class="meta">Expected July 2028<br>CGPA 7.15</div>
+
+        <div class="skill-panel">
+          <div class="head"><span class="idot" style="background:var(--purple)"></span>Applied Machine Learning</div>
+          <div class="tags">
+            <span>Regression Modeling</span>
+            <span>Time-Series Forecasting</span>
+            <span>Anomaly Detection</span>
+            <span>CNNs</span>
+            <span>Transfer Learning</span>
+            <span>Computer Vision</span>
+            <span>Pandas</span>
+            <span>NumPy</span>
+            <span>Scikit-Learn</span>
+          </div>
+        </div>
+
+        <div class="skill-panel">
+          <div class="head"><span class="idot" style="background:var(--cyan)"></span>Languages &amp; Frameworks</div>
+          <div class="tags">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>PyTorch</span>
+            <span>TensorFlow</span>
+            <span>Flask</span>
+            <span>LangChain</span>
+            <span>Java</span>
+            <span>SQL</span>
+            <span>JavaScript</span>
+            <span>HTML/CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-panel">
+          <div class="head"><span class="idot" style="background:var(--signal)"></span>Systems, Infra &amp; Core CS</div>
+          <div class="tags">
+            <span>Async Microservices</span>
+            <span>Docker</span>
+            <span>CI/CD</span>
+            <span>GCP</span>
+            <span>MongoDB</span>
+            <span>PostgreSQL</span>
+            <span>Vector DBs (Milvus · FAISS · Qdrant)</span>
+            <span>Git</span>
+            <span>Data Structures &amp; Algorithms</span>
+            <span>System Design</span>
+          </div>
+        </div>
       </div>
-      <div class="edu-row reveal">
+    </section>
+
+    <section class="alt" style="border-radius:var(--radius); padding:44px; margin-bottom:60px; border:var(--nb-border); box-shadow:var(--nb-shadow);">
+      <div class="section-head">
+        <div class="eyebrow">MILESTONES</div>
+        <h2>Track Record &amp; Accomplishments</h2>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="num">WINNER</div><div class="lbl">Smart India Hackathon (Internal Round) — Civic Connect CNN</div></div>
+        <div class="metric"><div class="num">1st RUNNER-UP</div><div class="lbl">45-Day DSA Challenge — Top algorithmic performance</div></div>
+        <div class="metric"><div class="num">3rd PLACE</div><div class="lbl">SIT Code Quest — Competitive programming</div></div>
+        <div class="metric"><div class="num">200+</div><div class="lbl">LeetCode Problems Solved — 100 Days Badge earned</div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">ACADEMIC_FOUNDATION</div>
+        <h2>Education &amp; Certifications</h2>
+      </div>
+      <div class="edu-row">
         <div>
-          <h4>Certifications</h4>
-          <div class="sub">Mastering Generative AI and ChatGPT · AWS APAC Solutions Architecture Job Simulation · Accenture Nordics Software Engineering Job Simulation</div>
+          <h4>Siliguri Institute of Technology (MAKAUT)</h4>
+          <div class="sub">B.Tech in Computer Science &amp; Engineering — AI &amp; ML Specialization</div>
         </div>
-        <div class="meta">Scaler / Forage</div>
+        <div class="meta">Expected: July 2028<br>CGPA: 7.2</div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <h4>Professional Certifications</h4>
+          <div class="sub">Mastering Generative AI &amp; ChatGPT (Scaler) · AWS APAC Solutions Architecture Simulation (Forage) · Accenture Nordics Software Engineering Simulation (Forage)</div>
+        </div>
+        <div class="meta">Verified Credentials</div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <h4>Open Source Contributions</h4>
+          <div class="sub">GirlScript Summer of Code (GSSoC) 2024 — contributed bug fixes, performance improvements, and documentation to developer tooling and ML repositories.</div>
+        </div>
+        <div class="meta">Jul–Nov 2024</div>
       </div>
     </section>
   </div>
 
   <div class="wrap">
-    <section style="padding-top:0;">
-      <div class="cta-banner reveal">
-        <div class="eyebrow">Let's talk</div>
-        <h2>Want the full picture?</h2>
-        <p>The resume has every detail — or just reach out directly.</p>
+    <section>
+      <div class="cta-banner">
+        <div class="eyebrow">INITIATE_CONTACT</div>
+        <h2>Ready to collaborate or discuss an open role?</h2>
+        <p>Available for technical interviews and architecture discussions. Open to AI/ML engineering positions in Bangalore, Hyderabad, or Remote.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="contact.html">Contact me</a>
-          <a class="btn btn-outline" href="resume.pdf" download>Download résumé</a>
-          <a class="btn btn-outline" href="projects.html">View projects</a>
+          <a class="btn btn-primary" href="contact.html">./contact_me.sh</a>
+          <a class="btn btn-outline" href="experience.html">view_experience()</a>
         </div>
       </div>
     </section>
@@ -121,12 +178,12 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© 2026 Chetan Chhetri · Siliguri, West Bengal, India</p>
+    <p>© 2026 CHETAN CHHETRI · SIT MAKAUT · B.TECH CSE (AI/ML)</p>
     <div class="footer-links">
-      <a href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/chetanchhetri" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://leetcode.com/u/2rPvyovowx" target="_blank" rel="noopener">LeetCode</a>
-      <a href="mailto:chhetrichetan45@gmail.com">Email</a>
+      <a href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">[GITHUB]</a>
+      <a href="https://linkedin.com/in/chetanchhetri" target="_blank" rel="noopener">[LINKEDIN]</a>
+      <a href="https://leetcode.com/u/2rPvyovowx" target="_blank" rel="noopener">[LEETCODE]</a>
+      <a href="mailto:chhetrichetan45@gmail.com">[EMAIL]</a>
     </div>
   </div>
 </footer>
