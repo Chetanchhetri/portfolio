@@ -49,7 +49,7 @@
   <div class="wrap">
     <section>
       <div class="filter-row">
-        <button class="filter-btn active" data-filter="all">ALL_SYSTEMS (10)</button>
+        <button class="filter-btn active" data-filter="all">ALL_SYSTEMS (12)</button>
         <button class="filter-btn" data-filter="rag">RAG &amp; AGENTS</button>
         <button class="filter-btn" data-filter="vision">COMPUTER VISION</button>
         <button class="filter-btn" data-filter="infra">INFRA &amp; TOOLS</button>
@@ -90,7 +90,77 @@
           <div class="chip-row"><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Qdrant</span><span class="chip">Scikit-Learn</span><span class="chip">SQLite</span></div>
           <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
         </div>
+<!-- AstraRoute Card -->
+<div class="card">
+  <div class="card-head">
+    <h3>AstraRoute Navigation Engine</h3>
+    <span class="pill">OPEN-SOURCE</span>
+  </div>
+  
+  <p class="desc">
+    Full-stack, disaster-resilient navigation platform engineered for high-risk climate corridors. Dynamically calculates safe perimeter detours around real-time climate hazards and breaking news bounding boxes.
+  </p>
 
+  <div class="arch-head">// ARCHITECTURE</div>
+  
+  <ul class="arch-list">
+    <li><strong>Disaster Scraping:</strong> Background workers monitor news RSS feeds using Scrapling and BeautifulSoup to auto-extract disaster locations into spatial hazard boxes.</li>
+    <li><strong>Perimeter Routing:</strong> Evaluates OSRM polyline intersections against MongoDB hazard coordinates to dynamically compute cardinal ($N, S, E, W$) detour vectors.</li>
+    <li><strong>Live Weather & Crowdsourcing:</strong> Queries Open-Meteo forecast API across route waypoints while accepting authenticated community hazard reports on Leaflet.js.</li>
+  </ul>
+
+  <div class="pills">
+    <span class="pill">FastAPI</span>
+    <span class="pill">MongoDB</span>
+    <span class="pill">Leaflet.js</span>
+    <span class="pill">OSRM</span>
+    <span class="pill">Scrapling</span>
+  </div>
+
+  <a href="https://github.com/Chetanchhetri/AstraRoute" target="_blank" class="btn shadow-btn">
+      github.com/Chetanchhetri/AstraRoute ↗
+    </a>
+    <a href="https://astraroute-1.onrender.com/app/home.html" target="_blank" class="btn shadow-btn">
+      Live Demo ↗
+    </a>
+</div>
+
+<!-- Blur Image Detector Card -->
+<div class="card">
+  <div class="card-head">
+    <h3>AI Blur & Defect Detector</h3>
+    <span class="pill">OPEN-SOURCE</span>
+  </div>
+  
+  <p class="desc">
+    Assessment-ready computer vision pipeline and REST API that automatically evaluates image quality metrics, detects structural blur, exposure anomalies, and noise levels.
+  </p>
+
+  <div class="arch-head">// ARCHITECTURE</div>
+  
+  <ul class="arch-list">
+    <li><strong>Quality Analytics:</strong> Computes OpenCV Variance of Laplacian for blur detection alongside grayscale standard deviation differences for noise estimation.</li>
+    <li><strong>Scoring & Persistence:</strong> Combines multi-issue metric deductions into an interpretable 0–100 quality score, logging full evaluation history to SQLite.</li>
+    <li><strong>Deployment:</strong> Asynchronous FastAPI backend paired with a dynamic JavaScript UI, containerized using Docker Compose for instant deployment.</li>
+  </ul>
+
+  <div class="pills">
+    <span class="pill">FastAPI</span>
+    <span class="pill">OpenCV</span>
+    <span class="pill">SQLite</span>
+    <span class="pill">Docker</span>
+    <span class="pill">JavaScript</span>
+  </div>
+
+  <div style="display: flex; gap: 8px;">
+    <a href="https://github.com/Chetanchhetri/Blur-Image-Detector" target="_blank" class="btn shadow-btn">
+      github.com/Chetanchhetri/Blur-Image-Detector ↗
+    </a>
+    <a href="https://blur-image-detector.onrender.com/" target="_blank" class="btn shadow-btn">
+      Live Demo ↗
+    </a>
+  </div>
+</div>
         <!-- Fact Check Multi-Agent -->
         <div class="card" data-category="rag">
           <div class="card-top"><h3>Fact Check Multi-Agent (VeriCore)</h3><span class="badge oss">OPEN-SOURCE</span></div>
