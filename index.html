@@ -18,14 +18,16 @@
 
 <div class="top-status-bar">
   <div class="wrap status-content">
-    <span><span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // LOCATION: SILIGURI → BANGALORE</span>
-    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER]</span>
+    <div class="status-left">
+      <span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // <span class="live-ist-clock"> BANGALORE (IST)</span>
+    </div>
+    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER · RAGAS]</span>
   </div>
 </div>
 
 <header class="site-header">
   <nav class="site-nav">
-    <a href="index.html" class="brand"><span class="mark">CC_</span>Chetan Chhetri</a>
+    <a href="index.html" class="brand">Chetan Chhetri</a>
     <div class="nav-links">
       <a href="index.html" class="active"><span class="cmd">//</span> 01.Home</a>
       <a href="experience.html"><span class="cmd">//</span> 02.Experience</a>
@@ -34,6 +36,8 @@
       <a href="contact.html"><span class="cmd">//</span> 05.Contact</a>
     </div>
     <div class="nav-right">
+      <button class="nav-cmd-btn" title="Search commands, projects, and actions"><kbd>Ctrl+K</kbd> <span>COMMANDS</span></button>
+      <button class="sound-toggle" title="Toggle audio feedback">🔇</button>
       <button class="theme-toggle" title="Toggle theme"><span class="ti">☀</span><span class="tl">LIGHT</span></button>
       <a class="nav-cta" href="contact.html">GET_IN_TOUCH()</a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -45,34 +49,114 @@
   <div class="wrap">
     <section class="hero">
       <div class="hero-text">
-        <div class="hero-badge"><span class="dot"></span> OPEN TO AI/ML INTERNSHIPS · BANGALORE / HYDERABAD / REMOTE</div>
+        <div class="hero-badge"><span class="dot"></span> OPEN TO AI/ML INTERNSHIPS · BANGALORE / HYDERABAD / DELHI / REMOTE</div>
         <h1>AI systems engineered for <span class="grad-ink">&lt;production_scale&gt;</span></h1>
+        <div style="font-size: 14.5px; margin-bottom: 18px; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="color: var(--accent); font-family: var(--mono); font-weight: bold;">FOCUS:</span>
+          <span class="typewriter-role">AI/ML Systems Engineer</span>
+        </div>
         <p class="lede">I'm Chetan — an AI/ML Engineer building production LLM and RAG systems for fintech and risk intelligence platforms. I fine-tune transformer models with LoRA, wire automated RAGAS evals &amp; guardrails into pipelines, and deploy async FastAPI microservices that hold response latencies sub-second and uptime at 99%+.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="projects.html">./view_projects.sh <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
           <a class="btn btn-outline" href="contact.html">get_in_touch()</a>
+          <button class="btn btn-outline nav-cmd-btn" style="padding: 11px 16px;"><kbd>Ctrl+K</kbd> Command Palette</button>
         </div>
       </div>
 
-      <div class="terminal-card">
-        <div class="terminal-header">
-          <div class="term-dots"><span class="t-red"></span><span class="t-yellow"></span><span class="t-green"></span></div>
-          <span class="term-title">risk_minor_pipeline_v2.1.py</span>
-          <span class="live"><span class="ld"></span>RUNNING</span>
-        </div>
-        <div class="terminal-body">
-          <div class="code-line"><span class="c-keyword">def</span> <span class="c-func">execute_risk_query</span>(query: <span class="c-type">str</span>):</div>
-          <div class="code-line indent"><span class="c-comment"># Step 1: Dense + Sparse Hybrid Search</span></div>
-          <div class="code-line indent">context = retriever.<span class="c-func">hybrid_search</span>(query, top_k=<span class="c-num">12</span>)</div>
-          <div class="code-line indent"><span class="c-comment"># Step 2: LoRA-Fine-Tuned Llama 3.1 Inference</span></div>
-          <div class="code-line indent">response = model.<span class="c-func">generate</span>(context, guardrail=<span class="c-val">True</span>)</div>
-          <div class="code-line indent"><span class="c-comment"># Step 3: RAGAS Faithfulness & Hallucination Check</span></div>
-          <div class="code-line indent">score = ragas.<span class="c-func">verify_faithfulness</span>(response)</div>
-          <div class="code-line indent"><span class="c-keyword">return</span> response, score</div>
-        </div>
-        <div class="trace-console">
-          <div class="console-head">&gt;_ LIVE SYSTEM DIAGNOSTICS</div>
-          <div id="console-output"></div>
+      <div class="hero-3d">
+        <canvas id="neural-canvas" aria-hidden="true"></canvas>
+        <div class="holo-orb" aria-hidden="true"></div>
+        <div class="scanline" aria-hidden="true"></div>
+        
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="term-dots"><span class="t-red"></span><span class="t-yellow"></span><span class="t-green"></span></div>
+            <div class="term-tabs">
+              <button class="term-tab active" data-tab="tab-code">pipeline.py</button>
+              <button class="term-tab" data-tab="tab-cli">terminal.sh</button>
+              <button class="term-tab" data-tab="tab-telemetry">telemetry.sys</button>
+            </div>
+            <span class="live"><span class="ld"></span>RUNNING</span>
+          </div>
+
+          <!-- Panel 1: Code & Interactive Simulator -->
+          <div id="tab-code" class="terminal-panel active">
+            <div class="terminal-body">
+              <div class="code-line"><span class="c-keyword">def</span> <span class="c-func">execute_risk_query</span>(query: <span class="c-type">str</span>):</div>
+              <div class="code-line indent"><span class="c-comment"># Step 1: Dense + Sparse Hybrid Search</span></div>
+              <div class="code-line indent">context = retriever.<span class="c-func">hybrid_search</span>(query, top_k=<span class="c-num">12</span>)</div>
+              <div class="code-line indent"><span class="c-comment"># Step 2: LoRA Llama 3.1 Inference</span></div>
+              <div class="code-line indent">response = model.<span class="c-func">generate</span>(context, guardrail=<span class="c-val">True</span>)</div>
+              <div class="code-line indent"><span class="c-comment"># Step 3: RAGAS Faithfulness Verification</span></div>
+              <div class="code-line indent">score = ragas.<span class="c-func">verify_faithfulness</span>(response)</div>
+              <div class="code-line indent"><span class="c-keyword">return</span> response, score</div>
+            </div>
+            <div class="term-run-bar">
+              <span style="color:var(--ink-soft);"><span style="color:var(--accent);">●</span> FastApi Worker [CUDA:0]</span>
+              <button class="run-sim-btn" id="run-code-sim">▶ RUN QUERY</button>
+            </div>
+            <div class="trace-console">
+              <div class="console-head">
+                <span>&gt;_ LIVE SYSTEM DIAGNOSTICS</span>
+                <span style="color:var(--accent);">p95: 38ms</span>
+              </div>
+              <div id="console-output"></div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Interactive CLI -->
+          <div id="tab-cli" class="terminal-panel">
+            <div class="cli-container">
+              <div class="cli-chips">
+                <span class="cli-chip" data-cmd="skills">skills</span>
+                <span class="cli-chip" data-cmd="projects">projects</span>
+                <span class="cli-chip" data-cmd="eval">eval</span>
+                <span class="cli-chip" data-cmd="bio">bio</span>
+                <span class="cli-chip" data-cmd="contact">contact</span>
+                <span class="cli-chip" data-cmd="clear">clear</span>
+              </div>
+              <div class="cli-logs" id="cli-term-logs">
+                <div class="cli-out-row" style="color:var(--ink-soft);">Type a command or click a chip above (e.g. 'skills', 'eval', 'projects').</div>
+              </div>
+              <div class="cli-input-line">
+                <span class="cli-prompt">chetan@sys:~$</span>
+                <input type="text" id="cli-term-input" class="cli-input" placeholder="type 'help' or any command..." autocomplete="off" spellcheck="false">
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Live Telemetry Gauges -->
+          <div id="tab-telemetry" class="terminal-panel">
+            <div class="telemetry-container">
+              <div class="telemetry-grid">
+                <div class="tel-card">
+                  <div class="tel-label"><span>VRAM Allocation</span><span>CUDA 12.4</span></div>
+                  <div class="tel-value" id="tel-vram-val">6.2 / 8.0 GB</div>
+                  <div class="tel-bar-wrap"><div class="tel-bar" style="width: 77%;"></div></div>
+                </div>
+                <div class="tel-card">
+                  <div class="tel-label"><span>Generation Speed</span><span>LoRA 8B</span></div>
+                  <div class="tel-value" id="tel-tok-val">78 tok/s</div>
+                  <div class="tel-bar-wrap"><div class="tel-bar cyan" style="width: 82%;"></div></div>
+                </div>
+                <div class="tel-card">
+                  <div class="tel-label"><span>RAGAS Faithfulness</span><span>Min: 0.85</span></div>
+                  <div class="tel-value" style="color:var(--cyan);">0.94</div>
+                  <div class="tel-bar-wrap"><div class="tel-bar cyan" style="width: 94%;"></div></div>
+                </div>
+                <div class="tel-card">
+                  <div class="tel-label"><span>p95 API Latency</span><span>Sub-second</span></div>
+                  <div class="tel-value" id="tel-lat-val" style="color:var(--accent);">38ms</div>
+                  <div class="tel-bar-wrap"><div class="tel-bar" style="width: 35%;"></div></div>
+                </div>
+              </div>
+              <div style="font: 11px var(--mono); color: var(--ink-soft); background: rgba(255,255,255,0.02); padding: 8px 12px; border: 1px solid var(--line-soft); border-radius: var(--radius-sm); display: flex; justify-content: space-between;">
+                <span>UPTIME: 99.7%</span>
+                <span style="color:var(--accent);">CONTAINER: ACTIVE [risk-minor-api:v2.1]</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -135,6 +219,74 @@
   </section>
 
   <div class="wrap">
+    <section class="rag-sim-section">
+      <div class="section-head">
+        <div class="eyebrow">INTERACTIVE_TESTBENCH</div>
+        <h2>Live RAG Architecture Simulator</h2>
+        <p>Experience how queries travel through Chetan's production pipeline — from dense/sparse retrieval and LoRA inference to RAGAS hallucination guardrails.</p>
+      </div>
+
+      <div class="rag-sim-box">
+        <div class="sim-controls">
+          <div style="font: 11px var(--mono); color: var(--ink-soft); display: flex; align-items: center; gap: 8px;">
+            <span style="color:var(--accent); font-weight:bold;">PRESET_QUERIES:</span>
+            <span>Click a scenario or type a custom query below:</span>
+          </div>
+          <div class="sim-query-chips">
+            <button class="sim-query-chip active" data-query="Regulatory Check: RBI Capital Adequacy Ratio §4.2">RBI Capital Adequacy</button>
+            <button class="sim-query-chip" data-query="Multilingual LoRA: Legal Contract Clause translation Assamese → English">Multilingual LoRA (Assamese)</button>
+            <button class="sim-query-chip" data-query="Civic Hazard: MobileNetV2 Pothole Severity & Routing">Civic Vision (MobileNetV2)</button>
+            <button class="sim-query-chip" data-query="Financial Audit: Anomaly Detection on Loan Scoring Dataset">Risk-Scoring Audit</button>
+          </div>
+
+          <div class="sim-input-row">
+            <input type="text" id="rag-sim-query" class="sim-input" value="Regulatory Check: RBI Capital Adequacy Ratio §4.2">
+            <button class="btn btn-primary" id="run-rag-sim">EXECUTE PIPELINE ⚡</button>
+          </div>
+        </div>
+
+        <!-- 4 Sequential Stages -->
+        <div class="sim-stages-grid">
+          <div class="sim-stage" id="stage-1">
+            <div class="sim-stage-num">// STAGE 01</div>
+            <div class="sim-stage-title">Tokenization &amp; Embedding</div>
+            <div class="sim-stage-detail">FastAPI tokenizer generates 1536-dim vectors.</div>
+          </div>
+          <div class="sim-stage" id="stage-2">
+            <div class="sim-stage-num">// STAGE 02</div>
+            <div class="sim-stage-title">Hybrid Retrieval</div>
+            <div class="sim-stage-detail">BM25 + Milvus dense vector search (top_k=12).</div>
+          </div>
+          <div class="sim-stage" id="stage-3">
+            <div class="sim-stage-num">// STAGE 03</div>
+            <div class="sim-stage-title">LoRA Llama 3.1 8B</div>
+            <div class="sim-stage-detail">Quantized CUDA inference with merged adapters.</div>
+          </div>
+          <div class="sim-stage" id="stage-4">
+            <div class="sim-stage-num">// STAGE 04</div>
+            <div class="sim-stage-title">RAGAS Guardrails</div>
+            <div class="sim-stage-detail">Faithfulness eval &amp; zero-hallucination check.</div>
+          </div>
+        </div>
+
+        <!-- Live Output Terminal -->
+        <div class="sim-output-box">
+          <div style="font-size: 11px; color: var(--ink-faint); margin-bottom: 6px;">&gt;_ SYSTEM RESPONSE STREAM:</div>
+          <div id="rag-sim-output-text" style="color: var(--cyan); min-height: 48px;">
+            [READY] Click "EXECUTE PIPELINE ⚡" or pick a preset query to run the simulated architecture.
+          </div>
+          <div class="sim-metrics-row">
+            <span class="sim-metric-tag"><b style="color:var(--accent);">LATENCY:</b> 38ms (p95)</span>
+            <span class="sim-metric-tag"><b style="color:var(--cyan);">FAITHFULNESS:</b> 0.94</span>
+            <span class="sim-metric-tag"><b style="color:var(--purple);">GUARDRAIL:</b> PASSED</span>
+            <span class="sim-metric-tag"><b style="color:var(--signal);">VRAM:</b> 6.2 GB</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
     <section>
       <div class="cta-banner">
         <div class="eyebrow">SYSTEM_READY</div>
@@ -160,6 +312,39 @@
     </div>
   </div>
 </footer>
+
+<!-- Global Command Palette Modal (Ctrl+K) -->
+<div class="cmd-palette-backdrop">
+  <div class="cmd-palette">
+    <div class="cmd-search-header">
+      <span style="color:var(--accent);font-weight:900;">›</span>
+      <input type="text" class="cmd-search-input" placeholder="Type a command or jump to project..." autocomplete="off">
+      <span class="cmd-kbd-badge">ESC to close</span>
+    </div>
+    <div class="cmd-results">
+      <div class="cmd-group-title">Navigation</div>
+      <div class="cmd-item" data-href="index.html"><div class="cmd-item-label"><span>🏠</span> 01. Home Overview</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="experience.html"><div class="cmd-item-label"><span>💼</span> 02. Experience &amp; Internships</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="projects.html"><div class="cmd-item-label"><span>🚀</span> 03. Projects (12 Systems)</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="about.html"><div class="cmd-item-label"><span>👤</span> 04. About &amp; Tech Stack</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="contact.html"><div class="cmd-item-label"><span>✉️</span> 05. Contact &amp; IDE Shell</div><span class="cmd-item-tag">Page</span></div>
+
+      <div class="cmd-group-title">Featured Systems</div>
+      <div class="cmd-item" data-href="projects.html#risk-minor"><div class="cmd-item-label"><span>⚡</span> Risk Minor (Milvus + LoRA Llama 3.1)</div><span class="cmd-item-tag">RAG</span></div>
+      <div class="cmd-item" data-href="projects.html#astraroute"><div class="cmd-item-label"><span>🗺️</span> AstraRoute Navigation Engine (OSRM + Scrapling)</div><span class="cmd-item-tag">Infra</span></div>
+      <div class="cmd-item" data-href="projects.html#blur-detector"><div class="cmd-item-label"><span>👁️</span> AI Blur &amp; Quality Detector (OpenCV API)</div><span class="cmd-item-tag">Vision</span></div>
+      <div class="cmd-item" data-href="projects.html#airbus-fcom"><div class="cmd-item-label"><span>✈️</span> Airbus FCOM Precision QA Engine</div><span class="cmd-item-tag">RAG</span></div>
+
+      <div class="cmd-group-title">Quick Actions</div>
+      <div class="cmd-item" data-action="theme"><div class="cmd-item-label"><span>◐</span> Toggle Theme (Dark / Light)</div><span class="cmd-item-tag">Action</span></div>
+      <div class="cmd-item" data-action="copy-email"><div class="cmd-item-label"><span>📋</span> Copy Email (chhetrichetan45@gmail.com)</div><span class="cmd-item-tag">Clipboard</span></div>
+      <div class="cmd-item" data-action="audio"><div class="cmd-item-label"><span>🔊</span> Toggle Audio FX Sounds</div><span class="cmd-item-tag">Setting</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" title="Scroll back to top" aria-label="Back to top">▲</button>
 
 <script src="script.js"></script>
 </body>

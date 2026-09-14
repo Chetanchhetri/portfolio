@@ -14,8 +14,10 @@
 
 <div class="top-status-bar">
   <div class="wrap status-content">
-    <span><span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // LOCATION: SILIGURI → BANGALORE</span>
-    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER]</span>
+    <div class="status-left">
+      <span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // <span class="live-ist-clock">BANGALORE (IST)</span>
+    </div>
+    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER · RAGAS]</span>
   </div>
 </div>
 
@@ -30,6 +32,8 @@
       <a href="contact.html"><span class="cmd">//</span> 05.Contact</a>
     </div>
     <div class="nav-right">
+      <button class="nav-cmd-btn" title="Search commands, projects, and actions"><kbd>Ctrl+K</kbd> <span>COMMANDS</span></button>
+      <button class="sound-toggle" title="Toggle audio feedback">🔇</button>
       <button class="theme-toggle"><span class="ti">☀</span><span class="tl">LIGHT</span></button>
       <a class="nav-cta" href="contact.html">GET_IN_TOUCH()</a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -68,6 +72,13 @@
             <li>Designed and deployed a <b>computer-vision pipeline</b> for cartoon-style image synthesis, optimized for constrained GPU VRAM execution using mixed-precision inference and model quantization.</li>
             <li>Engineered async <b>FastAPI microservices</b> with Docker CI/CD pipelines, achieving <b>40% reduction in request processing latency</b> and sustaining <b>99%+ service uptime</b> across all production endpoints.</li>
           </ul>
+          <div class="tl-metric-chips">
+            <span class="tl-metric-chip">⚡ 40% Latency Drop</span>
+            <span class="tl-metric-chip">🌐 8 Indian Languages</span>
+            <span class="tl-metric-chip">🎯 0.94 Faithfulness</span>
+            <span class="tl-metric-chip">🛡️ Zero-Hallucination Guardrails</span>
+            <span class="tl-metric-chip">📈 99%+ Uptime</span>
+          </div>
         </div>
       </div>
 
@@ -87,6 +98,12 @@
             <li>Built statistical <b>anomaly detection pipelines</b> over time-series IoT telemetry data using Pandas and Scikit-Learn, applying rolling z-score and IQR-based thresholding to decrease false-positive system alerts by <b>28%</b>.</li>
             <li>Implemented reproducible <b>ML training pipelines</b> with TensorFlow and Docker volume mounts, ensuring full model traceability and version control across distributed datasets and training environments.</li>
           </ul>
+          <div class="tl-metric-chips">
+            <span class="tl-metric-chip">⚡ 40% API Speedup</span>
+            <span class="tl-metric-chip">📦 35% Stockout Reduction</span>
+            <span class="tl-metric-chip">📉 28% False-Positive Drop</span>
+            <span class="tl-metric-chip">🐳 Docker Testbeds</span>
+          </div>
         </div>
       </div>
 
@@ -95,6 +112,7 @@
         <div class="tl-meta">
           <div class="period">Sep 2024 — Present</div>
           <div class="loc">Siliguri, WB, India</div>
+          <span class="badge oss" style="margin-top:10px;">LEADERSHIP</span>
         </div>
         <div class="tl-body">
           <h3>Technical Associate</h3>
@@ -111,6 +129,7 @@
         <div class="tl-meta">
           <div class="period">Jul 2024 — Nov 2024</div>
           <div class="loc">Remote</div>
+          <span class="badge oss" style="margin-top:10px;">OPEN-SOURCE</span>
         </div>
         <div class="tl-body">
           <h3>Open-Source Contributor</h3>
@@ -151,6 +170,39 @@
     </div>
   </div>
 </footer>
+
+<!-- Global Command Palette Modal (Ctrl+K) -->
+<div class="cmd-palette-backdrop">
+  <div class="cmd-palette">
+    <div class="cmd-search-header">
+      <span style="color:var(--accent);font-weight:900;">›</span>
+      <input type="text" class="cmd-search-input" placeholder="Type a command or jump to project..." autocomplete="off">
+      <span class="cmd-kbd-badge">ESC to close</span>
+    </div>
+    <div class="cmd-results">
+      <div class="cmd-group-title">Navigation</div>
+      <div class="cmd-item" data-href="index.html"><div class="cmd-item-label"><span>🏠</span> 01. Home Overview</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="experience.html"><div class="cmd-item-label"><span>💼</span> 02. Experience &amp; Internships</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="projects.html"><div class="cmd-item-label"><span>🚀</span> 03. Projects (12 Systems)</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="about.html"><div class="cmd-item-label"><span>👤</span> 04. About &amp; Tech Stack</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="contact.html"><div class="cmd-item-label"><span>✉️</span> 05. Contact &amp; IDE Shell</div><span class="cmd-item-tag">Page</span></div>
+
+      <div class="cmd-group-title">Featured Systems</div>
+      <div class="cmd-item" data-href="projects.html#risk-minor"><div class="cmd-item-label"><span>⚡</span> Risk Minor (Milvus + LoRA Llama 3.1)</div><span class="cmd-item-tag">RAG</span></div>
+      <div class="cmd-item" data-href="projects.html#astraroute"><div class="cmd-item-label"><span>🗺️</span> AstraRoute Navigation Engine (OSRM + Scrapling)</div><span class="cmd-item-tag">Infra</span></div>
+      <div class="cmd-item" data-href="projects.html#blur-detector"><div class="cmd-item-label"><span>👁️</span> AI Blur &amp; Quality Detector (OpenCV API)</div><span class="cmd-item-tag">Vision</span></div>
+      <div class="cmd-item" data-href="projects.html#airbus-fcom"><div class="cmd-item-label"><span>✈️</span> Airbus FCOM Precision QA Engine</div><span class="cmd-item-tag">RAG</span></div>
+
+      <div class="cmd-group-title">Quick Actions</div>
+      <div class="cmd-item" data-action="theme"><div class="cmd-item-label"><span>◐</span> Toggle Theme (Dark / Light)</div><span class="cmd-item-tag">Action</span></div>
+      <div class="cmd-item" data-action="copy-email"><div class="cmd-item-label"><span>📋</span> Copy Email (chhetrichetan45@gmail.com)</div><span class="cmd-item-tag">Clipboard</span></div>
+      <div class="cmd-item" data-action="audio"><div class="cmd-item-label"><span>🔊</span> Toggle Audio FX Sounds</div><span class="cmd-item-tag">Setting</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" title="Scroll back to top" aria-label="Back to top">▲</button>
 
 <script src="script.js"></script>
 </body>

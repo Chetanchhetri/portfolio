@@ -14,8 +14,10 @@
 
 <div class="top-status-bar">
   <div class="wrap status-content">
-    <span><span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // LOCATION: SILIGURI → BANGALORE</span>
-    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER]</span>
+    <div class="status-left">
+      <span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // <span class="live-ist-clock">BANGALORE (IST)</span>
+    </div>
+    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER · RAGAS]</span>
   </div>
 </div>
 
@@ -30,6 +32,8 @@
       <a href="contact.html"><span class="cmd">//</span> 05.Contact</a>
     </div>
     <div class="nav-right">
+      <button class="nav-cmd-btn" title="Search commands, projects, and actions"><kbd>Ctrl+K</kbd> <span>COMMANDS</span></button>
+      <button class="sound-toggle" title="Toggle audio feedback">🔇</button>
       <button class="theme-toggle"><span class="ti">☀</span><span class="tl">LIGHT</span></button>
       <a class="nav-cta" href="contact.html">GET_IN_TOUCH()</a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -159,6 +163,40 @@
         <div class="meta">Jul–Nov 2024</div>
       </div>
     </section>
+
+    <!-- Engineering Principles Section -->
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">CORE_PHILOSOPHY</div>
+        <h2>Engineering Principles</h2>
+        <p>How I approach building AI systems that survive in production rather than breaking on edge cases.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="card">
+          <div class="card-top">
+            <h3>01. Evals Before Scaling</h3>
+            <span class="badge prod">MEASUREMENT</span>
+          </div>
+          <p>Every LLM or fine-tuned adapter is coupled with automated RAGAS test harnesses measuring faithfulness, relevancy, and context recall before deployment. What isn't measured drifts.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <h3>02. Zero Hallucination Tolerance</h3>
+            <span class="badge oss">SAFETY</span>
+          </div>
+          <p>In legal and financial domains, fabricated outputs cause real liability. I build deterministic citation cross-checkers and strict cosine guardrails into the pipeline flow.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <h3>03. Low-Latency Async I/O</h3>
+            <span class="badge research">SYSTEMS</span>
+          </div>
+          <p>Async FastAPI microservices, non-blocking DB pools, Milvus hybrid search with reciprocal rank fusion, and quantized CUDA inference ensure sub-second p95 latencies.</p>
+        </div>
+      </div>
+    </section>
   </div>
 
   <div class="wrap">
@@ -187,6 +225,39 @@
     </div>
   </div>
 </footer>
+
+<!-- Global Command Palette Modal (Ctrl+K) -->
+<div class="cmd-palette-backdrop">
+  <div class="cmd-palette">
+    <div class="cmd-search-header">
+      <span style="color:var(--accent);font-weight:900;">›</span>
+      <input type="text" class="cmd-search-input" placeholder="Type a command or jump to project..." autocomplete="off">
+      <span class="cmd-kbd-badge">ESC to close</span>
+    </div>
+    <div class="cmd-results">
+      <div class="cmd-group-title">Navigation</div>
+      <div class="cmd-item" data-href="index.html"><div class="cmd-item-label"><span>🏠</span> 01. Home Overview</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="experience.html"><div class="cmd-item-label"><span>💼</span> 02. Experience &amp; Internships</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="projects.html"><div class="cmd-item-label"><span>🚀</span> 03. Projects (12 Systems)</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="about.html"><div class="cmd-item-label"><span>👤</span> 04. About &amp; Tech Stack</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="contact.html"><div class="cmd-item-label"><span>✉️</span> 05. Contact &amp; IDE Shell</div><span class="cmd-item-tag">Page</span></div>
+
+      <div class="cmd-group-title">Featured Systems</div>
+      <div class="cmd-item" data-href="projects.html#risk-minor"><div class="cmd-item-label"><span>⚡</span> Risk Minor (Milvus + LoRA Llama 3.1)</div><span class="cmd-item-tag">RAG</span></div>
+      <div class="cmd-item" data-href="projects.html#astraroute"><div class="cmd-item-label"><span>🗺️</span> AstraRoute Navigation Engine (OSRM + Scrapling)</div><span class="cmd-item-tag">Infra</span></div>
+      <div class="cmd-item" data-href="projects.html#blur-detector"><div class="cmd-item-label"><span>👁️</span> AI Blur &amp; Quality Detector (OpenCV API)</div><span class="cmd-item-tag">Vision</span></div>
+      <div class="cmd-item" data-href="projects.html#airbus-fcom"><div class="cmd-item-label"><span>✈️</span> Airbus FCOM Precision QA Engine</div><span class="cmd-item-tag">RAG</span></div>
+
+      <div class="cmd-group-title">Quick Actions</div>
+      <div class="cmd-item" data-action="theme"><div class="cmd-item-label"><span>◐</span> Toggle Theme (Dark / Light)</div><span class="cmd-item-tag">Action</span></div>
+      <div class="cmd-item" data-action="copy-email"><div class="cmd-item-label"><span>📋</span> Copy Email (chhetrichetan45@gmail.com)</div><span class="cmd-item-tag">Clipboard</span></div>
+      <div class="cmd-item" data-action="audio"><div class="cmd-item-label"><span>🔊</span> Toggle Audio FX Sounds</div><span class="cmd-item-tag">Setting</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" title="Scroll back to top" aria-label="Back to top">▲</button>
 
 <script src="script.js"></script>
 </body>

@@ -14,8 +14,10 @@
 
 <div class="top-status-bar">
   <div class="wrap status-content">
-    <span><span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // LOCATION: SILIGURI → BANGALORE</span>
-    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER]</span>
+    <div class="status-left">
+      <span class="pulse-dot"></span> SYSTEM STATUS: ONLINE // <span class="live-ist-clock">BANGALORE (IST)</span>
+    </div>
+    <span class="status-right">[ENV: FASTAPI · OLLAMA · CUDA · DOCKER · RAGAS]</span>
   </div>
 </div>
 
@@ -30,6 +32,8 @@
       <a href="contact.html"><span class="cmd">//</span> 05.Contact</a>
     </div>
     <div class="nav-right">
+      <button class="nav-cmd-btn" title="Search commands, projects, and actions"><kbd>Ctrl+K</kbd> <span>COMMANDS</span></button>
+      <button class="sound-toggle" title="Toggle audio feedback">🔇</button>
       <button class="theme-toggle"><span class="ti">☀</span><span class="tl">LIGHT</span></button>
       <a class="nav-cta" href="contact.html">GET_IN_TOUCH()</a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -48,18 +52,33 @@
 
   <div class="wrap">
     <section>
-      <div class="filter-row">
-        <button class="filter-btn active" data-filter="all">ALL_SYSTEMS (12)</button>
-        <button class="filter-btn" data-filter="rag">RAG &amp; AGENTS</button>
-        <button class="filter-btn" data-filter="vision">COMPUTER VISION</button>
-        <button class="filter-btn" data-filter="infra">INFRA &amp; TOOLS</button>
+      <div class="filter-search-container">
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all">ALL_SYSTEMS (12)</button>
+          <button class="filter-btn" data-filter="rag">RAG &amp; AGENTS</button>
+          <button class="filter-btn" data-filter="vision">COMPUTER VISION</button>
+          <button class="filter-btn" data-filter="infra">INFRA &amp; TOOLS</button>
+        </div>
+
+        <div class="proj-search-wrap">
+          <span class="proj-search-icon">🔍</span>
+          <input type="text" class="proj-search-input" placeholder="Search by tech (e.g. FastAPI, LoRA, OpenCV)..." autocomplete="off">
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <span class="proj-count-label" style="font: 11px var(--mono); color: var(--accent); letter-spacing: 0.05em;">SHOWING 12 / 12 SYSTEMS</span>
+        <span style="font: 11px var(--mono); color: var(--ink-faint);">Click "Inspect Architecture" for system workflows</span>
       </div>
 
       <div class="proj-grid">
 
         <!-- Risk Minor -->
-        <div class="card" data-category="rag">
-          <div class="card-top"><h3>Risk Minor</h3><span class="badge prod">PRODUCTION</span></div>
+        <div class="card" id="risk-minor" data-category="rag">
+          <div class="card-top">
+            <h3>Risk Minor</h3>
+            <span class="badge prod">PRODUCTION</span>
+          </div>
           <p>Multi-agent risk intelligence platform built for regulatory compliance workflows at Hansraj Ventures. Combines dense and sparse retrieval with a fine-tuned LLM, full evaluation tracing, and input/output safety guardrails in a single coherent pipeline.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -70,13 +89,29 @@
               <li><b>Infra:</b> Async FastAPI microservices containerized with Docker CI/CD; 40% latency reduction, 99%+ uptime in production at Hansraj Ventures.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">FastAPI</span><span class="chip">Milvus</span><span class="chip">RAGAS</span><span class="chip">Langfuse</span><span class="chip">Llama 3.1</span><span class="chip">Docker</span></div>
-          <div class="card-link" style="cursor:default; opacity:0.6;">Built at Hansraj Ventures (Private)</div>
+          <div class="chip-row">
+            <span class="chip">FastAPI</span><span class="chip">Milvus</span><span class="chip">RAGAS</span><span class="chip">Langfuse</span><span class="chip">Llama 3.1</span><span class="chip">Docker</span>
+          </div>
+          <div class="card-action-bar">
+            <span class="card-link" style="cursor:default; opacity:0.7;">Hansraj Ventures (Private)</span>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--accent); margin-left: auto;">⚡ 38ms p95</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> User Query → FastAPI Async Handler</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> BM25 Sparse + Milvus Dense Vector Search (Parallel)</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Reciprocal Rank Fusion (RRF top_k=12)</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> LoRA-adapted Llama 3.1 8B CUDA Generation</div>
+            <div class="arch-step-row"><span class="arch-step-num">05.</span> RAGAS Verification (0.94 Faithfulness) → Langfuse Trace</div>
+          </div>
         </div>
 
         <!-- Banking Compliance RAG -->
-        <div class="card" data-category="rag">
-          <div class="card-top"><h3>Banking Compliance RAG</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="banking-rag" data-category="rag">
+          <div class="card-top">
+            <h3>Banking Compliance RAG</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>End-to-end financial compliance system combining classical machine learning with retrieval-augmented generation to answer natural language regulatory queries over banking policy documents in real time.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -87,83 +122,89 @@
               <li><b>Storage:</b> SQLite for document metadata, conversation history, and audit logs; LangChain orchestrates the full retrieval-generation chain.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Qdrant</span><span class="chip">Scikit-Learn</span><span class="chip">SQLite</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
+          <div class="chip-row">
+            <span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Qdrant</span><span class="chip">Scikit-Learn</span><span class="chip">SQLite</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--cyan); margin-left: auto;">🎯 94% Precision</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> RBI Circular &amp; Loan Dataset Ingestion</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> FAISS + Qdrant Hybrid Index Search</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Multivariate Risk Regression Scoring</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> Citation Grounding &amp; Policy Validation</div>
+          </div>
         </div>
-<!-- AstraRoute Card -->
-<div class="card">
-  <div class="card-head">
-    <h3>AstraRoute Navigation Engine</h3>
-    <span class="pill">OPEN-SOURCE</span>
-  </div>
-  
-  <p class="desc">
-    Full-stack, disaster-resilient navigation platform engineered for high-risk climate corridors. Dynamically calculates safe perimeter detours around real-time climate hazards and breaking news bounding boxes.
-  </p>
 
-  <div class="arch-head">// ARCHITECTURE</div>
-  
-  <ul class="arch-list">
-    <li><strong>Disaster Scraping:</strong> Background workers monitor news RSS feeds using Scrapling and BeautifulSoup to auto-extract disaster locations into spatial hazard boxes.</li>
-    <li><strong>Perimeter Routing:</strong> Evaluates OSRM polyline intersections against MongoDB hazard coordinates to dynamically compute cardinal ($N, S, E, W$) detour vectors.</li>
-    <li><strong>Live Weather & Crowdsourcing:</strong> Queries Open-Meteo forecast API across route waypoints while accepting authenticated community hazard reports on Leaflet.js.</li>
-  </ul>
+        <!-- AstraRoute Card -->
+        <div class="card" id="astraroute" data-category="infra">
+          <div class="card-top">
+            <h3>AstraRoute Navigation Engine</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
+          <p>Full-stack, disaster-resilient navigation platform engineered for high-risk climate corridors. Dynamically calculates safe perimeter detours around real-time climate hazards and breaking news bounding boxes.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Disaster Scraping:</b> Background workers monitor news RSS feeds using Scrapling and BeautifulSoup to auto-extract disaster locations into spatial hazard boxes.</li>
+              <li><b>Perimeter Routing:</b> Evaluates OSRM polyline intersections against MongoDB hazard coordinates to dynamically compute cardinal (N, S, E, W) detour vectors.</li>
+              <li><b>Live Weather &amp; Crowdsourcing:</b> Queries Open-Meteo forecast API across route waypoints while accepting authenticated community hazard reports on Leaflet.js.</li>
+            </ul>
+          </div>
+          <div class="chip-row">
+            <span class="chip">FastAPI</span><span class="chip">MongoDB</span><span class="chip">Leaflet.js</span><span class="chip">OSRM</span><span class="chip">Scrapling</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/AstraRoute" target="_blank" rel="noopener">github.com/AstraRoute ↗</a>
+            <a class="card-action-btn live-pill" href="https://astraroute-1.onrender.com/app/home.html" target="_blank" rel="noopener">⚡ Live Demo ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> Scrapling Disaster News Scraper → Bounding Box Parser</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> MongoDB Geospatial Index Query</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> OSRM Waypoint Intersection &amp; Perimeter Vector Calculation</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> Leaflet.js Real-time Render + Open-Meteo Alerts</div>
+          </div>
+        </div>
 
-  <div class="pills">
-    <span class="pill">FastAPI</span>
-    <span class="pill">MongoDB</span>
-    <span class="pill">Leaflet.js</span>
-    <span class="pill">OSRM</span>
-    <span class="pill">Scrapling</span>
-  </div>
-
-  <a href="https://github.com/Chetanchhetri/AstraRoute" target="_blank" class="btn shadow-btn">
-      github.com/Chetanchhetri/AstraRoute ↗
-    </a>
-    <a href="https://astraroute-1.onrender.com/app/home.html" target="_blank" class="btn shadow-btn">
-      Live Demo ↗
-    </a>
-</div>
-
-<!-- Blur Image Detector Card -->
-<div class="card">
-  <div class="card-head">
-    <h3>AI Blur & Defect Detector</h3>
-    <span class="pill">OPEN-SOURCE</span>
-  </div>
-  
-  <p class="desc">
-    Assessment-ready computer vision pipeline and REST API that automatically evaluates image quality metrics, detects structural blur, exposure anomalies, and noise levels.
-  </p>
-
-  <div class="arch-head">// ARCHITECTURE</div>
-  
-  <ul class="arch-list">
-    <li><strong>Quality Analytics:</strong> Computes OpenCV Variance of Laplacian for blur detection alongside grayscale standard deviation differences for noise estimation.</li>
-    <li><strong>Scoring & Persistence:</strong> Combines multi-issue metric deductions into an interpretable 0–100 quality score, logging full evaluation history to SQLite.</li>
-    <li><strong>Deployment:</strong> Asynchronous FastAPI backend paired with a dynamic JavaScript UI, containerized using Docker Compose for instant deployment.</li>
-  </ul>
-
-  <div class="pills">
-    <span class="pill">FastAPI</span>
-    <span class="pill">OpenCV</span>
-    <span class="pill">SQLite</span>
-    <span class="pill">Docker</span>
-    <span class="pill">JavaScript</span>
-  </div>
-
-  <div style="display: flex; gap: 8px;">
-    <a href="https://github.com/Chetanchhetri/Blur-Image-Detector" target="_blank" class="btn shadow-btn">
-      github.com/Chetanchhetri/Blur-Image-Detector ↗
-    </a>
-    <a href="https://blur-image-detector.onrender.com/" target="_blank" class="btn shadow-btn">
-      Live Demo ↗
-    </a>
-  </div>
-</div>
+        <!-- Blur Image Detector Card -->
+        <div class="card" id="blur-detector" data-category="vision">
+          <div class="card-top">
+            <h3>AI Blur &amp; Defect Detector</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
+          <p>Assessment-ready computer vision pipeline and REST API that automatically evaluates image quality metrics, detects structural blur, exposure anomalies, and noise levels.</p>
+          <div class="proj-details">
+            <h4>// Architecture</h4>
+            <ul>
+              <li><b>Quality Analytics:</b> Computes OpenCV Variance of Laplacian for blur detection alongside grayscale standard deviation differences for noise estimation.</li>
+              <li><b>Scoring &amp; Persistence:</b> Combines multi-issue metric deductions into an interpretable 0–100 quality score, logging full evaluation history to SQLite.</li>
+              <li><b>Deployment:</b> Asynchronous FastAPI backend paired with a dynamic JavaScript UI, containerized using Docker Compose for instant deployment.</li>
+            </ul>
+          </div>
+          <div class="chip-row">
+            <span class="chip">FastAPI</span><span class="chip">OpenCV</span><span class="chip">SQLite</span><span class="chip">Docker</span><span class="chip">JavaScript</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/Blur-Image-Detector" target="_blank" rel="noopener">github.com/Blur-Image-Detector ↗</a>
+            <a class="card-action-btn live-pill" href="https://blur-image-detector.onrender.com/" target="_blank" rel="noopener">⚡ Live Demo ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> Image Upload → Stream Buffer Validation</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> OpenCV Laplacian Variance + FFT Frequency Analysis</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Multi-Metric Penalty Matrix → 0-100 Quality Score</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> SQLite Audit Log &amp; JSON API Response</div>
+          </div>
+        </div>
         <!-- Fact Check Multi-Agent -->
-        <div class="card" data-category="rag">
-          <div class="card-top"><h3>Fact Check Multi-Agent (VeriCore)</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="fact-check" data-category="rag">
+          <div class="card-top">
+            <h3>Fact Check Multi-Agent (VeriCore)</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>Fake-news and misinformation detection engine that queries three locally-running LLMs in parallel and aggregates their verdicts through a consensus scoring layer, dramatically reducing single-model hallucination and bias.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -174,13 +215,28 @@
               <li><b>Evaluation:</b> RAGAS faithfulness metrics validate each model's reasoning against its cited context; disagreement deltas tracked per model to identify consistent bias patterns.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">Streamlit</span><span class="chip">Ollama</span><span class="chip">RAGAS</span><span class="chip">Multi-Agent</span><span class="chip">Python</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
+          <div class="chip-row">
+            <span class="chip">Streamlit</span><span class="chip">Ollama</span><span class="chip">RAGAS</span><span class="chip">Multi-Agent</span><span class="chip">Python</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--accent); margin-left: auto;">⚡ 3 Local Models</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> User Claim Input → DuckDuckGo Live News Context Fetch</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> Async Query to Qwen2 + Phi-3 + LLaMA 3.1 (Ollama)</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Weighted Consensus Voting &amp; Reasoning Aggregator</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> RAGAS Grounding Verification &amp; Final Confidence Score</div>
+          </div>
         </div>
 
         <!-- Intelligent Proxy Gateway -->
-        <div class="card" data-category="infra">
-          <div class="card-top"><h3>Intelligent Proxy Gateway (IPG)</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="proxy-gateway" data-category="infra">
+          <div class="card-top">
+            <h3>Intelligent Proxy Gateway (IPG)</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>Four-stage LLM request optimization middleware deployed as both a Flask/FastAPI backend and a Chrome Manifest V3 extension — routes queries intelligently between local on-device models and cloud LLMs based on task classification and cost.</p>
           <div class="proj-details">
             <h4>// Pipeline Stages</h4>
@@ -191,13 +247,28 @@
               <li><b>Stage 4 — Token Optimization:</b> Compresses context window before final LLM call via extractive summarization, reducing token cost by up to 35% on long-context requests.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Ollama</span><span class="chip">Chrome Extension</span><span class="chip">MV3</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
+          <div class="chip-row">
+            <span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Ollama</span><span class="chip">Chrome Extension</span><span class="chip">MV3</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri" target="_blank" rel="noopener">github.com/Chetanchhetri ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--cyan); margin-left: auto;">⚡ 35% Cost Cut</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> Prompt Reformulation &amp; Instruction Sanitization</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> Injection &amp; PII Scanning (Cosine Guardrail)</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Complexity Triage: Local Ollama vs Cloud Fallback</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> Token Compression &amp; Response Cache Hit</div>
+          </div>
         </div>
 
         <!-- RAG Airbus FCOM -->
-        <div class="card" data-category="rag">
-          <div class="card-top"><h3>RAG · Airbus FCOM</h3><span class="badge research">RESEARCH</span></div>
+        <div class="card" id="airbus-fcom" data-category="rag">
+          <div class="card-top">
+            <h3>RAG · Airbus FCOM</h3>
+            <span class="badge research">RESEARCH</span>
+          </div>
           <p>Ultra-high-precision retrieval-augmented question-answering system grounded in Airbus Flight Crew Operating Manual (FCOM) documentation — a domain where factual errors are operationally unacceptable.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -207,13 +278,27 @@
               <li><b>Faithfulness guardrail:</b> Every generated answer traced back to source passage citations; any answer with insufficient grounding returns a confidence warning rather than a fabricated response.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">Python</span><span class="chip">RAG</span><span class="chip">Vector DB</span><span class="chip">PDF Parsing</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/RAG_AIRBUS-FCOM" target="_blank" rel="noopener">github.com/Chetanchhetri/RAG_AIRBUS-FCOM ↗</a>
+          <div class="chip-row">
+            <span class="chip">Python</span><span class="chip">RAG</span><span class="chip">Vector DB</span><span class="chip">PDF Parsing</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/RAG_AIRBUS-FCOM" target="_blank" rel="noopener">github.com/RAG_AIRBUS-FCOM ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> FCOM Document Hierarchy &amp; Procedure Chunking</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> Precision Vector Indexing &amp; Chapter Metadata Filtering</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Reranking (Cross-Encoder Precision Priority)</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> Flight Procedure Citations &amp; Strict Non-Fabrication Check</div>
+          </div>
         </div>
 
         <!-- Local Co-pilot -->
-        <div class="card" data-category="infra">
-          <div class="card-top"><h3>Local Co-pilot</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="local-copilot" data-category="infra">
+          <div class="card-top">
+            <h3>Local Co-pilot</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>On-device AI coding assistant extension for VS Code, built on Ollama for fully offline, zero data-leakage developer workflows with real-time code completion and context-aware suggestions.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -223,13 +308,27 @@
               <li><b>VS Code API integration:</b> Custom inline completion provider with debounced triggering; separate command palette integration for longer generation tasks like docstring generation and test scaffolding.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">Ollama</span><span class="chip">VS Code API</span><span class="chip">Python</span><span class="chip">TypeScript</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/Local_Co-pilot" target="_blank" rel="noopener">github.com/Chetanchhetri/Local_Co-pilot ↗</a>
+          <div class="chip-row">
+            <span class="chip">Ollama</span><span class="chip">VS Code API</span><span class="chip">Python</span><span class="chip">TypeScript</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/Local_Co-pilot" target="_blank" rel="noopener">github.com/Local_Co-pilot ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--accent); margin-left: auto;">🔒 100% Offline</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> VS Code Cursor Position &amp; Sliding Context Window</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> Debounced Local IPC Stream to Ollama (Codestral/DeepSeek)</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Low-latency Token Stream Completion Provider</div>
+          </div>
         </div>
 
         <!-- Image Enhancer -->
-        <div class="card" data-category="vision">
-          <div class="card-top"><h3>Image Enhancer</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="image-enhancer" data-category="vision">
+          <div class="card-top">
+            <h3>Image Enhancer</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>Computer vision pipeline combining super-resolution and intelligent denoising for automated image quality improvement — built as companion infrastructure for specialized vision models with degraded input data.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -239,13 +338,28 @@
               <li><b>Pipeline integration:</b> Exposes a REST API endpoint for batch processing and integrates as a preprocessing stage for downstream vision classifiers — designed for VRAM-constrained environments.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">OpenCV</span><span class="chip">Python</span><span class="chip">ESRGAN</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/Image-Enhancer" target="_blank" rel="noopener">github.com/Chetanchhetri/Image-Enhancer ↗</a>
+          <div class="chip-row">
+            <span class="chip">TensorFlow</span><span class="chip">OpenCV</span><span class="chip">Python</span><span class="chip">ESRGAN</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/Image-Enhancer" target="_blank" rel="noopener">github.com/Image-Enhancer ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--cyan); margin-left: auto;">⚡ 4× Upscale</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> Noise Variance Estimation Module</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> DnCNN Adaptive Denoising Filter</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> ESRGAN Generator 4× Perceptual Upscaling</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> Batch REST API Payload Response</div>
+          </div>
         </div>
 
         <!-- Potato Disease Classifier -->
-        <div class="card" data-category="vision">
-          <div class="card-top"><h3>Potato Disease Classifier</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="potato-disease" data-category="vision">
+          <div class="card-top">
+            <h3>Potato Disease Classifier</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>CNN-based agricultural leaf disease detection system identifying early blight, late blight, and healthy potato plants from field images — designed for high-throughput inference in resource-limited agricultural environments.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -255,13 +369,27 @@
               <li><b>Inference throughput:</b> Batch inference pipeline with TFServing for production deployment; ~120 images/sec throughput on a single consumer GPU.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">CNN</span><span class="chip">Keras</span><span class="chip">TFServing</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/potato-disease-classifier" target="_blank" rel="noopener">github.com/Chetanchhetri/potato-disease-classifier ↗</a>
+          <div class="chip-row">
+            <span class="chip">TensorFlow</span><span class="chip">CNN</span><span class="chip">Keras</span><span class="chip">TFServing</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/potato-disease-classifier" target="_blank" rel="noopener">github.com/potato-disease-classifier ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--accent); margin-left: auto;">⚡ 120 img/sec</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> Leaf Image Ingestion &amp; Color Space Normalization</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> INT8 Quantized CNN Inference (Edge-optimized)</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Softmax Multi-class Diagnosis &amp; Severity Score</div>
+          </div>
         </div>
 
         <!-- Civic Connect -->
-        <div class="card" data-category="vision">
-          <div class="card-top"><h3>Civic Connect Engine</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="civic-connect" data-category="vision">
+          <div class="card-top">
+            <h3>Civic Connect Engine</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>Smart India Hackathon (Internal Round Winner) project — CNN classifier for detecting urban civic hazards (potholes, garbage, damaged infrastructure) from crowdsourced citizen photos, integrated with GCP microservices for automated complaint routing.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -271,13 +399,28 @@
               <li><b>Infra:</b> Fully containerized with Docker; GCP Cloud Run autoscaling handles variable citizen submission volumes; image metadata (GPS, timestamp) attached to every complaint for geographic routing.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">TensorFlow</span><span class="chip">CNN</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">MobileNetV2</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/Civic-Connect" target="_blank" rel="noopener">github.com/Chetanchhetri/Civic-Connect ↗</a>
+          <div class="chip-row">
+            <span class="chip">TensorFlow</span><span class="chip">CNN</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">MobileNetV2</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/Civic-Connect" target="_blank" rel="noopener">github.com/Civic-Connect ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+            <span style="font: 11px var(--mono); color: var(--cyan); margin-left: auto;">🏆 SIH Winner · 91% Acc</span>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> Citizen Mobile Upload → GCP Cloud Storage</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> MobileNetV2 Cloud Run Container Inference</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> GPS Tag Extraction &amp; Municipal Ward Routing</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> Automated Ticket Creation &amp; Severity Dispatch</div>
+          </div>
         </div>
 
         <!-- NetScan Pro -->
-        <div class="card" data-category="infra">
-          <div class="card-top"><h3>NetScan Pro</h3><span class="badge oss">OPEN-SOURCE</span></div>
+        <div class="card" id="netscan-pro" data-category="infra">
+          <div class="card-top">
+            <h3>NetScan Pro</h3>
+            <span class="badge oss">OPEN-SOURCE</span>
+          </div>
           <p>High-performance network reconnaissance utility for discovering active hosts, enumerating open ports, fingerprinting service banners, and building a structured inventory of network topology — built as a developer security research tool.</p>
           <div class="proj-details">
             <h4>// Architecture</h4>
@@ -287,8 +430,19 @@
               <li><b>Output:</b> Structured JSON and CSV export of scan results with service version fingerprints; designed for integration into broader security pipeline workflows.</li>
             </ul>
           </div>
-          <div class="chip-row"><span class="chip">Python</span><span class="chip">Sockets</span><span class="chip">Threading</span><span class="chip">Networking</span></div>
-          <a class="card-link" href="https://github.com/Chetanchhetri/NetScan_Pro" target="_blank" rel="noopener">github.com/Chetanchhetri/NetScan_Pro ↗</a>
+          <div class="chip-row">
+            <span class="chip">Python</span><span class="chip">Sockets</span><span class="chip">Threading</span><span class="chip">Networking</span>
+          </div>
+          <div class="card-action-bar">
+            <a class="card-link" href="https://github.com/Chetanchhetri/NetScan_Pro" target="_blank" rel="noopener">github.com/NetScan_Pro ↗</a>
+            <button class="card-action-btn toggle-arch-btn">Inspect Architecture ▼</button>
+          </div>
+          <div class="arch-drawer">
+            <div class="arch-step-row"><span class="arch-step-num">01.</span> CIDR Subnet Parser &amp; Concurrent ICMP Sweeper</div>
+            <div class="arch-step-row"><span class="arch-step-num">02.</span> Async TCP/UDP SYN &amp; Connect Port Scanner</div>
+            <div class="arch-step-row"><span class="arch-step-num">03.</span> Service Banner Grabbing &amp; Fingerprint Matching</div>
+            <div class="arch-step-row"><span class="arch-step-num">04.</span> Structured JSON/CSV Export Engine</div>
+          </div>
         </div>
 
       </div>
@@ -321,6 +475,39 @@
     </div>
   </div>
 </footer>
+
+<!-- Global Command Palette Modal (Ctrl+K) -->
+<div class="cmd-palette-backdrop">
+  <div class="cmd-palette">
+    <div class="cmd-search-header">
+      <span style="color:var(--accent);font-weight:900;">›</span>
+      <input type="text" class="cmd-search-input" placeholder="Type a command or jump to project..." autocomplete="off">
+      <span class="cmd-kbd-badge">ESC to close</span>
+    </div>
+    <div class="cmd-results">
+      <div class="cmd-group-title">Navigation</div>
+      <div class="cmd-item" data-href="index.html"><div class="cmd-item-label"><span>🏠</span> 01. Home Overview</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="experience.html"><div class="cmd-item-label"><span>💼</span> 02. Experience &amp; Internships</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="projects.html"><div class="cmd-item-label"><span>🚀</span> 03. Projects (12 Systems)</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="about.html"><div class="cmd-item-label"><span>👤</span> 04. About &amp; Tech Stack</div><span class="cmd-item-tag">Page</span></div>
+      <div class="cmd-item" data-href="contact.html"><div class="cmd-item-label"><span>✉️</span> 05. Contact &amp; IDE Shell</div><span class="cmd-item-tag">Page</span></div>
+
+      <div class="cmd-group-title">Featured Systems</div>
+      <div class="cmd-item" data-href="projects.html#risk-minor"><div class="cmd-item-label"><span>⚡</span> Risk Minor (Milvus + LoRA Llama 3.1)</div><span class="cmd-item-tag">RAG</span></div>
+      <div class="cmd-item" data-href="projects.html#astraroute"><div class="cmd-item-label"><span>🗺️</span> AstraRoute Navigation Engine (OSRM + Scrapling)</div><span class="cmd-item-tag">Infra</span></div>
+      <div class="cmd-item" data-href="projects.html#blur-detector"><div class="cmd-item-label"><span>👁️</span> AI Blur &amp; Quality Detector (OpenCV API)</div><span class="cmd-item-tag">Vision</span></div>
+      <div class="cmd-item" data-href="projects.html#airbus-fcom"><div class="cmd-item-label"><span>✈️</span> Airbus FCOM Precision QA Engine</div><span class="cmd-item-tag">RAG</span></div>
+
+      <div class="cmd-group-title">Quick Actions</div>
+      <div class="cmd-item" data-action="theme"><div class="cmd-item-label"><span>◐</span> Toggle Theme (Dark / Light)</div><span class="cmd-item-tag">Action</span></div>
+      <div class="cmd-item" data-action="copy-email"><div class="cmd-item-label"><span>📋</span> Copy Email (chhetrichetan45@gmail.com)</div><span class="cmd-item-tag">Clipboard</span></div>
+      <div class="cmd-item" data-action="audio"><div class="cmd-item-label"><span>🔊</span> Toggle Audio FX Sounds</div><span class="cmd-item-tag">Setting</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" title="Scroll back to top" aria-label="Back to top">▲</button>
 
 <script src="script.js"></script>
 </body>
